@@ -1,0 +1,36 @@
+.PauseButton {
+    padding: 0px;
+    top: 5px;
+    right: 15px;
+    z-index: 1000;
+    position:fixed;  
+    text-align: center;
+    font-family:inherit;
+    font-size: inherit;
+    font-size: 275%;
+    padding: 0px;
+    border: none;
+    border-radius: 100px;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.0) !important;
+    padding: 10px;
+    text-shadow: 4px 4px 2px rgb(31, 31, 31);
+    color: rgba(236, 236, 236, 0.75);
+} 
+
+.PauseButton i{
+    margin: 0px;
+    font-size: 150%;
+
+} 
+
+.PauseButton:hover {
+    color: rgba(71, 71, 71, 0.75);
+    text-shadow: 4px 4px 2px rgb(177, 177, 177);
+}
+
+
+
+.PauseButtonHidden {
+    display: none !important;
+}

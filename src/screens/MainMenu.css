@@ -1,0 +1,42 @@
+.MainMenu {
+    position: absolute;
+    /*background-color: #688888;*/
+    background-color: seashell;
+    width: 100%;
+    height: 100%;
+}
+
+.MainMenu .Content
+{
+    background-color: seashell;
+    padding: 20px;
+    color: black;
+}
+
+.MainMenu .Content .header
+{
+    font-size: 150%;
+    
+}
+
+.MainMenu .Content .header h1 i
+{
+    font-size: 250%;
+    
+}
+
+.MainMenu .Content .buttons a
+{
+    color: black;
+    font-size: 500%;
+}
+
+.MainMenu .Content .buttons a:hover
+{
+    color: grey;
+}
+
+.MainMenu .Content .buttons a:active
+{
+    
+}

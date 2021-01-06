@@ -1,0 +1,49 @@
+.gridBlock0 {
+    background-color: none;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.gridBlock1 {
+     background-color: rgba(255, 0, 0, 0.644);
+
+}
+
+.gridBlock2 {
+    background-color: rgba(255, 123, 0, 0.644);
+}
+
+.gridBlock3 {
+    background-color: rgba(255, 255, 0, 0.644);
+}
+
+.gridBlock4 {
+     background-color: rgba(0, 255, 0, 0.644);
+}
+
+.gridBlock5 {
+    background-color: rgba(0, 0, 255, 0.644);
+}
+
+.gridBlock6 {
+    background-color: rgba(151, 0, 151, 0.644);
+}
+
+.gridBlock7 {
+    background-color: rgba(0, 252, 252, 0.644);
+}
+
+.gridBlock {
+    border: rgba(0, 0, 0, .25) .1em solid;
+    color: white;
+    text-align: center;
+    flex: 1 0 auto;
+    height:auto;
+    -webkit-box-shadow: 5px 8px 18px -1px rgba(0,0,0,0.73); 
+    box-shadow: 5px 8px 18px -1px rgba(0,0,0,0.73);
+}
+.gridBlock:before {
+    content:'';
+    float:left;
+    padding-top:100%;
+}

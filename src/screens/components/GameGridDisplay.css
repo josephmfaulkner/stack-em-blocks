@@ -1,0 +1,33 @@
+.GameGridDisplayContainer {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    -ms-transform: translate(50%,-50%);
+    transform: translate(50%,-50%);
+    width: 100%;
+
+}
+
+.GameGridDisplay  {
+    background-color: black;
+    background-image: linear-gradient(#749494, #333536);
+    margin: auto;
+    -webkit-box-shadow: 0px 0px 100px 22px rgba(255,255,255,0.17); 
+    box-shadow: 0px 0px 100px 22px rgba(255,255,255,0.17);
+}
+
+.GameGridDisplaygridRow{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row;
+    justify-content: space-around;
+    line-height:30px;
+}
+
+
