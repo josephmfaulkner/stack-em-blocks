@@ -6,8 +6,8 @@ const addBlockToGrid = function(block, gameGrid)
     let newGrid = copy2dArray(gameGrid);
 
     let blockData = block.blockData;
-    let xOffset = block.x;
-    let yOffset = block.y;
+    let xOffset = block.xPos;
+    let yOffset = block.yPos;
 
     for(let iY = 0; iY < blockData.length; iY++)
     {

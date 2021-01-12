@@ -1,10 +1,14 @@
-import { newBlank2dArray, copy2dArray } from "../modelUtils/misc";
+import { newBlank2dArray, copy2dArray } from "../utils/misc";
 
-import { MOVE_BLOCK, ROTATE_BLOCK, ADD_BLOCK_TO_GRID, REPLACE_PLAYER_BLOCK } from "../actions/block";
-import { CLEAR_FILLED_ROWS, SHIFT_CLEARED_ROWS } from "../actions/gameGrid";
+import { MOVE_BLOCK, ROTATE_BLOCK, REPLACE_PLAYER_BLOCK } from "../actions/block";
+import { CLEAR_FILLED_ROWS, SHIFT_CLEARED_ROWS, ADD_PLAYER_BLOCK_TO_GRID } from "../actions/gameGrid";
 import { INCREMENT_GAME_SCORE, RESTART_GAME, PAUSE_RESUME_GAME, GAME_OVER, EXIT_GAME } from "../actions/gameStatus";
 
+
+import GameBlockHelper from "./helpers/GameBlockHelper";
+import GameGridHelper from "./helpers/GameGridHelper";
 import GameStatusHelper from "./helpers/GameStatusHelper";
+
 
 const defaultState = {
     grid: newBlank2dArray(10,20),
@@ -27,33 +31,31 @@ const game = function(state = defaultState, action)
     switch(action.type)
     {
         case REPLACE_PLAYER_BLOCK:
-            return state;
+            const newPlayerBlock = action.payload;
+            return GameBlockHelper.replacePlayerBlock(state, newPlayerBlock);
         case MOVE_BLOCK:
-            return state;
+            const moveDirection = action.payload;
+            return GameBlockHelper.moveBlock(state, moveDirection);
         case ROTATE_BLOCK:
-            return state;
-        case ADD_BLOCK_TO_GRID: 
-            return state;      
+            const rotateDirection = action.payload;
+            return GameBlockHelper.rotateBlock(state, rotateDirection);
+        case ADD_PLAYER_BLOCK_TO_GRID: 
+            return GameGridHelper.addBlockToGrid(state);      
         case CLEAR_FILLED_ROWS:
-            return state;
+            return GameGridHelper.clearFilledRows(state);
         case SHIFT_CLEARED_ROWS:
-            return state;
+            return GameGridHelper.shiftClearedRowsDown(state);
         case INCREMENT_GAME_SCORE:
             const incrementAmount = action.payload; 
             return GameStatusHelper.incrementGameScore(state, incrementAmount);
-
-        case RESTART_GAME:
-            return defaultState;
-
         case PAUSE_RESUME_GAME:
             return GameStatusHelper.togglePaused(state);
-
         case GAME_OVER:
             return GameStatusHelper.gameOver(state);
-        
+        case RESTART_GAME:
+            return defaultState;
         case EXIT_GAME:
             return defaultState;
-
         default:
             return state;
     }

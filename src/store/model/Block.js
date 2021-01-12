@@ -1,5 +1,5 @@
-import { getRandomBlock } from "../modelUtils/block";
-import { rotateLeft, rotateRight } from "../modelUtils/blockActions";
+import { getRandomBlock } from "../utils/blockConstants";
+import { rotateLeft, rotateRight } from "../utils/blockActions";
 
 export default class Block {
     constructor(gameGrid, blockData = getRandomBlock(), x = null, y = null)

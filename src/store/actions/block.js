@@ -1,63 +1,73 @@
-const MOVE_DOWN = 'MOVE_DOWN';
-const MOVE_LEFT  = 'MOVE_LEFT';
-const MOVE_RIGHT = 'MOVE_RIGHT';
-const ROTATE_LEFT = 'ROTATE_LEFT';
-const ROTATE_RIGHT = 'ROTATE_RIGHT';
+const MOVE_BLOCK = 'MOVE_BLOCK';
+const ROTATE_BLOCK = 'ROTATE_BLOCK';
+const REPLACE_PLAYER_BLOCK = 'REPLACE_PLAYER_BLOCK';
 
-const ADD_BLOCK_TO_GRID = 'ADD_BLOCK_TO_GRID';
+const DIRECTION_DOWN  = 'DIRECTION_DOWN';
+const DIRECTION_LEFT  = 'DIRECTION_LEFT';
+const DIRECTION_RIGHT = 'DIRECTION_RIGHT';
 
 function moveDown()
 {
     return {
-        type: MOVE_DOWN,
-        payload: null
+        type: MOVE_BLOCK,
+        payload: DIRECTION_DOWN
     }
 }
 
 function moveLeft()
 {
     return {
-        type: MOVE_LEFT, 
-        payload: null
+        type: MOVE_BLOCK, 
+        payload: DIRECTION_LEFT
     }
 }
 
 function moveRight()
 {
     return {
-        type: MOVE_RIGHT, 
-        payload: null
+        type: MOVE_BLOCK, 
+        payload: DIRECTION_RIGHT
     }
 }
 
 function rotateLeft()
 {
     return {
-        type: ROTATE_LEFT, 
-        payload: null
+        type: ROTATE_BLOCK, 
+        payload: DIRECTION_LEFT
     }
 }
 
 function rotateRight()
 {
     return {
-        type: ROTATE_RIGHT, 
-        payload: null
+        type: ROTATE_BLOCK, 
+        payload: DIRECTION_RIGHT
     }
 }
 
-function addBlockToGrid() {
+function replacePlayerBlock(blockData) {
     return {
-        type: ADD_BLOCK_TO_GRID,
-        payload: null
+        type: REPLACE_PLAYER_BLOCK,
+        payload: blockData
     }
 }
 
 export { 
-    MOVE_DOWN, moveDown, 
-    MOVE_LEFT, moveLeft, 
-    MOVE_RIGHT, moveRight, 
-    ROTATE_LEFT, rotateLeft, 
-    ROTATE_RIGHT, rotateRight,
-    ADD_BLOCK_TO_GRID, addBlockToGrid
+
+moveDown,
+moveLeft,
+moveRight,
+rotateLeft,
+rotateRight,
+replacePlayerBlock,
+
+MOVE_BLOCK,
+ROTATE_BLOCK,
+REPLACE_PLAYER_BLOCK,
+
+DIRECTION_DOWN,
+DIRECTION_LEFT,
+DIRECTION_RIGHT
+
 }

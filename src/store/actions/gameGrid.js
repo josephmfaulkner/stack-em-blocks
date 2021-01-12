@@ -1,5 +1,13 @@
+const ADD_PLAYER_BLOCK_TO_GRID = 'ADD_PLAYER_BLOCK_TO_GRID';
 const CLEAR_FILLED_ROWS = 'CLEAR_FILLED_ROWS';
 const SHIFT_CLEARED_ROWS = 'SHIFT_CLEARED_ROWS';
+
+function addPlayerBlockToGrid() {
+    return {
+        type: ADD_PLAYER_BLOCK_TO_GRID,
+        payload: null
+    }
+}
 
 function clearFilledRows() {
     return {
@@ -15,7 +23,8 @@ function shiftClearedRows() {
     }
 }
 
-export { 
+export {
+    ADD_PLAYER_BLOCK_TO_GRID, addPlayerBlockToGrid,
     CLEAR_FILLED_ROWS, clearFilledRows,
     SHIFT_CLEARED_ROWS, shiftClearedRows 
 }

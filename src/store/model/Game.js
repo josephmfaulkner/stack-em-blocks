@@ -1,5 +1,5 @@
-import { newBlank2dArray, copy2dArray } from "../modelUtils/misc";
-import { addBlockToGrid, clearFilledRows, shiftClearedRowsDown } from "../modelUtils/gameGrid";
+import { newBlank2dArray, copy2dArray } from "../utils/misc";
+import { addBlockToGrid, clearFilledRows, shiftClearedRowsDown } from "../utils/gameGrid";
 import Block from "./Block";
 
 class Game {
