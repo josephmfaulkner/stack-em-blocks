@@ -1,47 +1,46 @@
-const INPUT_LEFT  = 'INPUT_LEFT';
-const INPUT_RIGHT = 'INPUT_RIGHT';
-const INPUT_DOWN  = 'INPUT_DOWN';
-const INPUT_ROTATE_LEFT = 'INPUT_ROTATE_LEFT';
-const INPUT_ROTATE_RIGHT = 'INPUT_ROTATE_RIGHT';
+import { DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT } from "./block";
+
+const INPUT_MOVE  = 'INPUT_MOVE';
+const INPUT_ROTATE = 'INPUT_ROTATE';
 const INPUT_PAUSE_RESUME = 'INPUT_PAUSE_RESUME';
 
 function inputLeft()
 {
     return {
-        type: INPUT_LEFT,
-        payload: null
+        type: INPUT_MOVE,
+        payload: DIRECTION_LEFT
     }
 }
 
 function inputRight()
 {
     return {
-        type: INPUT_RIGHT,
-        payload: null
+        type: INPUT_MOVE,
+        payload: DIRECTION_RIGHT
     }
 }
 
 function inputDown()
 {
     return {
-        type: INPUT_DOWN,
-        payload: null
+        type: INPUT_MOVE,
+        payload: DIRECTION_DOWN
     }
 }
 
 function inputRotateLeft()
 {
     return {
-        type: INPUT_ROTATE_LEFT,
-        payload: null
+        type: INPUT_ROTATE,
+        payload: DIRECTION_LEFT
     }
 }
 
 function inputRotateRight()
 {
     return {
-        type: INPUT_ROTATE_RIGHT,
-        payload: null
+        type: INPUT_ROTATE,
+        payload: DIRECTION_RIGHT
     }
 }
 
@@ -53,13 +52,18 @@ function inputPauseResume()
     }
 }
 
-export { 
-    INPUT_LEFT, inputLeft,
-    INPUT_RIGHT, inputRight,
-    INPUT_DOWN, inputDown,
-    INPUT_ROTATE_LEFT, inputRotateLeft,
-    INPUT_ROTATE_RIGHT, inputRotateRight,
-    INPUT_PAUSE_RESUME, inputPauseResume
+export {
+    
+    INPUT_MOVE,
+    INPUT_ROTATE,
+    INPUT_PAUSE_RESUME, 
+    inputLeft,
+    inputRight,
+    inputDown,
+    inputRotateLeft,
+    inputRotateRight,
+    inputPauseResume
+
 }
 
 
