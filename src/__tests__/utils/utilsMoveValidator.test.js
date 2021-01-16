@@ -37,13 +37,27 @@ it('boundaries can move right, cannot move left', () => {
 })
 
 
+it('boundaries can rotate left', () => {
+    let gameState = game(undefined, {});
+    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_I));
+    for(let i = 0; i < 5; i++) { gameState = game(gameState, moveDown()); }
+    expect(canRotateLeft(gameState)).toEqual(true);
+})
+
+it('boundaries can rotate right', () => {
+    let gameState = game(undefined, {});
+    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_I));
+    for(let i = 0; i < 5; i++) { gameState = game(gameState, moveDown()); }
+    expect(canRotateRight(gameState)).toEqual(true);
+})
+
+
 it('boundaries cannot rotate left', () => {
     let gameState = game(undefined, {});
     gameState = game(gameState, replacePlayerBlock(Block.SHAPE_I));
     gameState = game(gameState, rotateLeft());
     for(let i = 0; i < 18; i++) { gameState = game(gameState, moveDown()); }
     expect(canRotateLeft(gameState)).toEqual(false);
-    //expect(canRotateRight(gameState)).toEqual(false);
 })
 
 const testInputGrid = [

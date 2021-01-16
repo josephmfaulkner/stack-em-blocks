@@ -1,60 +1,70 @@
 import { connect } from 'react-redux';
 import { call, select, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
-import getGame from "../../../deprecated/model/Game";
+
 
 import { INPUT_MOVE, INPUT_ROTATE, INPUT_PAUSE_RESUME } from "../actions/input";
 import { moveDown, moveLeft, moveRight, rotateLeft, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT, rotateRight } from "../actions/block"
+import { canMoveDown,canMoveLeft, canMoveRight, canRotateLeft, canRotateRight  } from "../utils/moveValidations";
 import { togglePauseGame } from "../actions/gameStatus";
 
-const getGamePaused = (state) => { return state.gameStatus.paused};
-
 export function* onInputMove(action) {
-    let paused = yield select(getGamePaused); if(paused) {return;}
+    let gameState = yield select(); gameState = gameState.game; 
+    let paused = gameState.stats.paused; if(paused) {return;}
     let direction = action.payload;
 
     switch (direction) {
         case DIRECTION_DOWN:
-            yield put(moveDown());            
+            if(canMoveDown(gameState))
+            {
+                yield put(moveDown());  
+            }        
             break;
         case DIRECTION_LEFT:
-            yield put(moveLeft());
+            if(canMoveLeft(gameState))
+            {
+                yield put(moveLeft());
+            }
             break;
         case DIRECTION_RIGHT: 
-            yield put(moveRight());
+            if(canMoveRight(gameState))
+            {
+                yield put(moveRight());
+            }
             break;        
         default:
             break;
     }
-    /*
-    if(getGame().getGameBlock().canMoveDown())
-    {
-        yield put(moveDown());
-    }
-    */
 }
 
 export function* onInputRotate(action) {
-    let paused = yield select(getGamePaused); if(paused) {return;}
+    let gameState = yield select(); gameState = gameState.game; 
+    let paused = gameState.stats.paused; if(paused) {return;}
     let direction = action.payload;
+
+    console.log("ROTATE", action);
+    console.log("PAUSED", paused);
 
     switch (direction) {
         case DIRECTION_LEFT:
-            yield put(rotateLeft());
+            const canMoveRotateLeft = canRotateLeft(gameState);
+            if(canMoveRotateLeft)
+            {
+                console.log("ROTATE LEFT", canMoveRotateLeft);
+                yield put(rotateLeft());
+            }
             break;
         case DIRECTION_RIGHT:
-            yield put(rotateRight());
+            const canMoveRotateRight = canRotateRight(gameState);
+            if(canMoveRotateRight)
+            {
+                console.log("ROTATE RIGHT", canMoveRotateRight);
+                yield put(rotateRight());
+            }
             break;    
         default:
             break;
     }
-
-    /*
-    if(getGame().getGameBlock().canRotateRight())
-    {
-        yield put(rotateRight());
-    }
-    */
 }
 
 export function* onInputPauseResume(action) {

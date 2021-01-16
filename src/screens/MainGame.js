@@ -6,6 +6,7 @@ import {
 
 import { connect } from 'react-redux';
 import { startGame, restartGame, togglePauseGame, gameOver, exitGame } from '../store/actions/gameStatus';
+import { getGameStateAsGrid } from "../store/utils/gameGrid";
 
 import GameGridDisplay from "./components/GameGridDisplay";
 import InputControls from "./components/InputControls";
@@ -95,11 +96,12 @@ class MainGame extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      gameScore: state.gameStatus.score,
-      gameLevel: state.gameStatus.level,  
-      gameGrid: state.gameGrid,
-      paused : state.gameStatus.paused,
-      gameOver : state.gameStatus.gameOver
+      gameScore: state.game.stats.score,
+      gameLevel: state.game.stats.level,  
+      gameGrid: getGameStateAsGrid(state.game.grid, state.game.playerBlock),
+      playerBlock: state.game.playerBlock,
+      paused : state.game.stats.paused,
+      gameOver : state.game.stats.gameOver
     }
 };
   

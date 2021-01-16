@@ -1,8 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import gameStatus from "./reducers/gameStatus";
-import gameGrid from "./reducers/gameGrid";
+import game from "./reducers/game";
 
 import {composeWithDevTools} from 'redux-devtools-extension';
 import { startGame } from './sagas';
@@ -21,8 +20,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const mainStore = createStore(
     combineReducers({
-        gameStatus,
-        gameGrid
+        game
     })
     ,
     composeWithDevTools(
