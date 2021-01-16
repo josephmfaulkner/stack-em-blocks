@@ -1,7 +1,11 @@
 import { newBlank2dArray } from "./misc";
 
-const rotateLeft = function(block){
+const rotateLeft = function(playerBlock){
     
+    const block = playerBlock.blockData;
+    let newPosX = playerBlock.xPos;
+    let newPosY = playerBlock.yPos;
+
     if (block.length <= 0) { return [[]];}
 
     const yLen = block.length; 
@@ -18,11 +22,20 @@ const rotateLeft = function(block){
             newArray[newY][newX] = block[y][x];
         }
     }
-    return newArray;
+
+    return { 
+        blockData: newArray,
+        xPos: newPosX,
+        yPos: newPosY
+    };
 }
 
-const rotateRight = function(block){
+const rotateRight = function(playerBlock){
     
+    const block = playerBlock.blockData;
+    let newPosX = playerBlock.xPos;
+    let newPosY = playerBlock.yPos;
+
     if (block.length <= 0) { return [[]];}
 
     const yLen = block.length; 
@@ -39,7 +52,12 @@ const rotateRight = function(block){
             newArray[newY][newX] = block[y][x];
         }
     }
-    return newArray;
+
+    return { 
+        blockData: newArray,
+        xPos: newPosX,
+        yPos: newPosY
+    };
 }
 
 export {rotateLeft, rotateRight};

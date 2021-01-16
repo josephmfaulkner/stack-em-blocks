@@ -1,30 +1,23 @@
+import { testControllerStore } from "../../__testUtil/testStores";
 import game from "../../store/reducers/game";
-import { gameControlsMain } from "../../store/sagas/controls";
-import { moveDown, moveLeft, moveRight, rotateLeft, rotateRight, replacePlayerBlock } from "../../store/actions/block";
-import { inputDown, inputLeft, inputRight, inputRotateLeft, inputRotateRight, inputPauseResume } from "../../store/actions/input";
+import { replacePlayerBlock } from "../../store/actions/block";
+import { inputDown, inputPauseResume } from "../../store/actions/input";
 
 import * as Block from "../../store/utils/blockConstants";
-import { expectSaga } from "redux-saga-test-plan";
 import { togglePauseGame } from "../../store/actions/gameStatus";
 
 it('input On Paused (Block Does Not Move)', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_B));
-    gameState = game(gameState, togglePauseGame());
 
-    let expectedGameState = gameState;
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_B));
+    testExpectedResult = game(testExpectedResult, togglePauseGame());
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputDown())
-            .dispatch(inputDown())
-            .dispatch(inputDown())
-            .dispatch(inputLeft())
-            .dispatch(inputRight())
-            .dispatch(inputRotateLeft())
-            .dispatch(inputRotateRight())
-            .dispatch(inputPauseResume())
-            .dispatch(inputPauseResume())
-            .hasFinalState(expectedGameState)
-            .run();
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_B));
+    testSagaStore.dispatch(inputPauseResume());
+    for(let i = 0; i < 18; i++){ testSagaStore.dispatch(inputDown()); }
+
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
+
 });

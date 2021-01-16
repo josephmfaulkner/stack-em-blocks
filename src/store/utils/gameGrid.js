@@ -94,8 +94,12 @@ const shiftClearedRowsDown = function(gameGrid)
     return newGrid;
 }
 
-const getGameStateAsGrid = function(playerGrid, playerBlock)
+const getGameStateAsGrid = function(gameState)
 {
+
+    const playerGrid = gameState.grid;
+    const playerBlock = gameState.playerBlock;
+
     if(playerBlock != null && playerBlock != undefined)
     {
         return addBlockToGrid(playerBlock, playerGrid);

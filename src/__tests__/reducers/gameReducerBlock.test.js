@@ -31,6 +31,49 @@ it('rotate L block Left', () => {
 
 });
 
+it('rotate L block  4 times', () => {
+
+    let gameState = game(undefined, {});
+    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_L));
+    
+    gameState = game(gameState, rotateLeft());
+    expect(gameState.playerBlock.blockData).not.toBe(Block.SHAPE_L);
+    expect(gameState.playerBlock.blockData).toEqual(
+        [
+            [0,0,4],
+            [4,4,4]
+        ]
+    );
+
+    gameState = game(gameState, rotateLeft());
+    expect(gameState.playerBlock.blockData).toEqual(
+        [
+            [4,4],
+            [0,4],
+            [0,4]
+        ]
+    );
+    
+    gameState = game(gameState, rotateLeft());
+    expect(gameState.playerBlock.blockData).toEqual(
+        [
+            [4,4,4],
+            [4,0,0]
+        ]
+    );
+
+    gameState = game(gameState, rotateLeft());
+    expect(gameState.playerBlock.blockData).toEqual(
+        [
+            [4,0],
+            [4,0],
+            [4,4]
+        ]
+    );
+
+
+});
+
 it('rotate L block Right', () => {
 
     let gameState = game(undefined, {});

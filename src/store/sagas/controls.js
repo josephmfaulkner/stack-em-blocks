@@ -38,19 +38,20 @@ export function* onInputMove(action) {
 }
 
 export function* onInputRotate(action) {
-    let gameState = yield select(); gameState = gameState.game; 
+    let gameState = yield select();
+    gameState = gameState.game; 
     let paused = gameState.stats.paused; if(paused) {return;}
     let direction = action.payload;
 
-    console.log("ROTATE", action);
-    console.log("PAUSED", paused);
+    //console.log("ROTATE", action);
+    //console.log("PAUSED", paused);
 
     switch (direction) {
         case DIRECTION_LEFT:
             const canMoveRotateLeft = canRotateLeft(gameState);
             if(canMoveRotateLeft)
             {
-                console.log("ROTATE LEFT", canMoveRotateLeft);
+                //console.log("ROTATE LEFT", canMoveRotateLeft);
                 yield put(rotateLeft());
             }
             break;
@@ -58,7 +59,7 @@ export function* onInputRotate(action) {
             const canMoveRotateRight = canRotateRight(gameState);
             if(canMoveRotateRight)
             {
-                console.log("ROTATE RIGHT", canMoveRotateRight);
+                //console.log("ROTATE RIGHT", canMoveRotateRight);
                 yield put(rotateRight());
             }
             break;    

@@ -1,62 +1,46 @@
+import { testControllerStore } from "../../__testUtil/testStores";
 import game from "../../store/reducers/game";
-import { gameControlsMain } from "../../store/sagas/controls";
-import { moveDown, moveLeft, moveRight, rotateLeft, rotateRight, replacePlayerBlock } from "../../store/actions/block";
-import { inputDown, inputLeft, inputRight, inputRotateLeft, inputRotateRight, inputPauseResume } from "../../store/actions/input";
-
+import { moveDown, moveLeft, moveRight, replacePlayerBlock } from "../../store/actions/block";
+import { inputDown, inputLeft, inputRight } from "../../store/actions/input";
 import * as Block from "../../store/utils/blockConstants";
-import { canMoveDown, canMoveLeft, canMoveRight, canRotateLeft, canRotateRight } from "../../store/utils/moveValidations";
 
-import { expectSaga } from "redux-saga-test-plan";
-import { togglePauseGame } from "../../store/actions/gameStatus";
 
 it('input Move Block Down', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_B));
 
-    let expectedGameState = game(gameState, moveDown());
-        expectedGameState = game(expectedGameState, moveDown());
-        expectedGameState = game(expectedGameState, moveDown());
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 18; i++){ testExpectedResult = game(testExpectedResult, moveDown()); }
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputDown())
-            .dispatch(inputDown())
-            .dispatch(inputDown())
-            .hasFinalState(expectedGameState)
-            .run();
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 18; i++){ testSagaStore.dispatch(inputDown()); }
+
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
 });
 
-
 it('input Move Block Left', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_B));
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 3; i++){ testExpectedResult = game(testExpectedResult, moveLeft()); }
 
-    let expectedGameState = game(gameState, moveLeft());
-        expectedGameState = game(expectedGameState, moveLeft());
-        expectedGameState = game(expectedGameState, moveLeft());
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 3; i++){ testSagaStore.dispatch(inputLeft()); }
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputLeft())
-            .dispatch(inputLeft())
-            .dispatch(inputLeft())
-            .hasFinalState(expectedGameState)
-            .run();
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
 });
 
 it('input Move Block Right', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_B));
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 3; i++){ testExpectedResult = game(testExpectedResult, moveRight()); }
 
-    let expectedGameState = game(gameState, moveRight());
-        expectedGameState = game(expectedGameState, moveRight());
-        expectedGameState = game(expectedGameState, moveRight());
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 3; i++){ testSagaStore.dispatch(inputRight()); }
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputRight())
-            .dispatch(inputRight())
-            .dispatch(inputRight())
-            .hasFinalState(expectedGameState)
-            .run();
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
 });

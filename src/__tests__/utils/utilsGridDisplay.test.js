@@ -51,8 +51,6 @@ it('RENDERS GRID FROM STATE', () => {
 
     gameState = game(gameState, replacePlayerBlock(Block.SHAPE_B));
 
-    console.log(getGameStateAsGrid(gameState));
-
     const gameStateAsGrid = getGameStateAsGrid(gameState);
     expect(gameStateAsGrid).toEqual(test1ExpectedGrid);
 });

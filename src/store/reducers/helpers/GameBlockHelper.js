@@ -55,22 +55,17 @@ export default class GameBlockHelper {
     
     static rotateBlock(state, direction)
     {
-        let newBlockData = state.playerBlock.blockData;
+        let newPlayerBlock = state.playerBlock;
         switch (direction) {
             case DIRECTION_LEFT:
-                newBlockData = rotateLeft(newBlockData);
+                newPlayerBlock = rotateLeft(state.playerBlock);
                 break;
             case DIRECTION_RIGHT:
-                newBlockData = rotateRight(newBlockData);
+                newPlayerBlock = rotateRight(state.playerBlock);
                 break;
             default:
                 break;
         }
-
-        const newPlayerBlock = {
-            ...state.playerBlock,
-            blockData: newBlockData
-        }; 
 
         return {
             ...state,

@@ -1,13 +1,17 @@
     import { rotateLeft, rotateRight } from "./blockActions";
+    import { copyPlayerBlock } from "./misc";
  
-    
-
     //boolean
     const isMoveOutOfBounds = function(gameGrid, playerBlock, xDir, yDir)
     {
         const blockData = playerBlock.blockData;
         const x = playerBlock.xPos;
         const y = playerBlock.yPos;
+
+        if(gameGrid == null || gameGrid == undefined || blockData == null || blockData == undefined)
+        {
+            return true; 
+        }
         
         const yBlockLimit = blockData.length - 1 + y;
         const xBlockLimit = blockData[0].length - 1 + x;
@@ -28,6 +32,11 @@
         const blockData = playerBlock.blockData;
         const x = playerBlock.xPos;
         const y = playerBlock.yPos;
+
+        if(gameGrid == null || gameGrid == undefined || blockData == null || blockData == undefined)
+        {
+            return true; 
+        }
 
         let checkDirX = xDir; 
         let checkDirY = yDir;
@@ -59,7 +68,7 @@
     const canMoveDown = function(state)
     {
         const grid = state.grid;
-        let playerBlock = state.playerBlock;
+        const playerBlock = state.playerBlock;
         if(isMoveOutOfBounds(grid, playerBlock, 0,1)) { return false;  }
         if(isBlockCollision(grid, playerBlock, 0,1) ) { return false; }
         return true;
@@ -69,7 +78,7 @@
     const canMoveLeft = function(state)
     {
         const grid = state.grid;
-        let playerBlock = state.playerBlock;
+        const playerBlock = state.playerBlock;
         if(isMoveOutOfBounds(grid, playerBlock, -1,0)) { return false;  }
         if(isBlockCollision(grid, playerBlock, -1,0) ) { return false; }
         return true;
@@ -89,8 +98,7 @@
     const canRotateLeft = function(state)
     {
         const grid = state.grid;
-        let checkRotateLeft = state.playerBlock;
-        checkRotateLeft.blockData = rotateLeft(checkRotateLeft.blockData);
+        let checkRotateLeft = rotateLeft(state.playerBlock);
         if(isMoveOutOfBounds(grid, checkRotateLeft , 0,0)) { return false;  }
         if(isBlockCollision(grid, checkRotateLeft , 0,0) ) { return false; }
         return true;
@@ -100,8 +108,7 @@
     const canRotateRight = function(state)
     {
         const grid = state.grid;
-        let checkRotateRight = state.playerBlock;
-        checkRotateRight.blockData = rotateRight(checkRotateRight.blockData);
+        let checkRotateRight = rotateRight(state.playerBlock);
         if(isMoveOutOfBounds(grid, checkRotateRight , 0,0)) { return false;  }
         if(isBlockCollision(grid, checkRotateRight , 0,0) ) { return false; }
         return true;

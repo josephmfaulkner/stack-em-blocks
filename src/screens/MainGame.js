@@ -98,7 +98,7 @@ const mapStateToProps = (state) => {
     return {
       gameScore: state.game.stats.score,
       gameLevel: state.game.stats.level,  
-      gameGrid: getGameStateAsGrid(state.game.grid, state.game.playerBlock),
+      gameGrid: getGameStateAsGrid(state.game),
       playerBlock: state.game.playerBlock,
       paused : state.game.stats.paused,
       gameOver : state.game.stats.gameOver

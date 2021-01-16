@@ -1,61 +1,55 @@
+import { testControllerStore } from "../../__testUtil/testStores";
 import game from "../../store/reducers/game";
-import { gameControlsMain } from "../../store/sagas/controls";
-import { moveDown, moveLeft, moveRight, rotateLeft, rotateRight, replacePlayerBlock } from "../../store/actions/block";
-import { inputDown, inputLeft, inputRight, inputRotateLeft, inputRotateRight, inputPauseResume } from "../../store/actions/input";
+import { moveDown, moveLeft, moveRight, rotateRight, replacePlayerBlock } from "../../store/actions/block";
+import { inputDown, inputLeft, inputRight, inputRotateRight } from "../../store/actions/input";
 
 import * as Block from "../../store/utils/blockConstants";
-import { canMoveDown, canMoveLeft, canMoveRight, canRotateLeft, canRotateRight } from "../../store/utils/moveValidations";
-
-import { expectSaga } from "redux-saga-test-plan";
-import { togglePauseGame } from "../../store/actions/gameStatus";
 
 it('input Cannot Move Block Left', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_I));
-    for(let i = 0; i < 4; i++) { gameState = game(gameState, moveLeft()); }
+    
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 4; i++){ testExpectedResult = game(testExpectedResult, moveLeft()); }
 
-    let expectedGameState = gameState;
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 20; i++){ testSagaStore.dispatch(inputLeft()); }
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputLeft())
-            .dispatch(inputLeft())
-            .dispatch(inputLeft())
-            .hasFinalState(expectedGameState)
-            .run();
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
+
 })
 
 it('input Cannot Move Block Right', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_I));
-    for(let i = 0; i < 5; i++) { gameState = game(gameState, moveRight()); }
 
-    let expectedGameState = gameState;
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 4; i++){ testExpectedResult = game(testExpectedResult, moveRight()); }
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputRight())
-            .dispatch(inputRight())
-            .dispatch(inputRight())
-            .hasFinalState(expectedGameState)
-            .run();
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_B));
+    for(let i = 0; i < 20; i++){ testSagaStore.dispatch(inputRight()); }
+
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
+
 })
 
 it('input Cannot Move Block Down', () => {
-    let gameState = game(undefined, {});
-    gameState = game(gameState, replacePlayerBlock(Block.SHAPE_I));
-    gameState = game(gameState, rotateRight());
-    for(let i = 0; i < 19; i++) { gameState = game(gameState, moveDown()); }
 
-    let expectedGameState = gameState;
+    let testExpectedResult = game(undefined, {});
+    testExpectedResult = game(testExpectedResult, replacePlayerBlock(Block.SHAPE_I));
+    testExpectedResult = game(testExpectedResult, rotateRight());
+    for(let i = 0; i < 19; i++){ testExpectedResult = game(testExpectedResult, moveDown()); }
 
-    return expectSaga(gameControlsMain)
-            .withReducer(game, gameState)
-            .dispatch(inputDown())
-            .dispatch(inputDown())
-            .dispatch(inputDown())
-            .hasFinalState(expectedGameState)
-            .run();
+    let testSagaStore = testControllerStore();
+    testSagaStore.dispatch(replacePlayerBlock(Block.SHAPE_I));
+    testSagaStore.dispatch(inputRotateRight());
+    for(let i = 0; i < 50; i++){ testSagaStore.dispatch(inputDown()); }
+
+    let result = testSagaStore.getState();
+    expect(result.game).toEqual(testExpectedResult);
+
 })
 
 

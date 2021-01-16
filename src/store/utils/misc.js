@@ -32,4 +32,17 @@ const copy2dArray = function(array)
     return newArray;
 }
 
-export { newBlank2dArray, copy2dArray };
+const copyPlayerBlock = function(playerBlock)
+{
+    let newXPos = playerBlock.xPos; 
+    let newYPos = playerBlock.yPos;
+    let newBlockData = copy2dArray(playerBlock.blockData);
+
+    return {
+        xPos: newXPos,
+        yPos: newYPos,
+        blockData: newBlockData
+    };
+}
+
+export { newBlank2dArray, copy2dArray, copyPlayerBlock };
