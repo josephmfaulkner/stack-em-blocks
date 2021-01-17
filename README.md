@@ -14,9 +14,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### You will need: 
 
-* [Git]()
-* [NodeJs]()
-* [Yarn]() or [NPM]()
+* [Git](https://git-scm.com/)
+* [NodeJs](https://nodejs.org/)
+* [Yarn](https://classic.yarnpkg.com/en/) or [NPM](https://www.npmjs.com/get-npm)
 
 ```
 ### Using Yarn:
@@ -32,6 +32,6 @@ npm install
 npm start
 ```
 
-By default, the project will run on [localhost:3000](localhost:3000)
+By default, the project will run on [localhost:3000](http://localhost:3000/)
 
 - - - -
