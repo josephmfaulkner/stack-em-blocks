@@ -114,6 +114,15 @@
         return true;
     }
 
+    const isGameOver = function(state)
+    {
+        const grid = state.grid;
+        let playerBlock = copyPlayerBlock(state.playerBlock);
+        if(isMoveOutOfBounds(grid, playerBlock, 0,0)) { return true;  }
+        if(isBlockCollision(grid, playerBlock, 0,0) ) { return true; }
+        return false;
+    }
+
     /**
      * 
     grid: newBlank2dArray(10,20),
@@ -131,6 +140,7 @@ export {
     canMoveLeft,
     canMoveRight,
     canRotateLeft, 
-    canRotateRight 
+    canRotateRight,
+    isGameOver 
 };
 

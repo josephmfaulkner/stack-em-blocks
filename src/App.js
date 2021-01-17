@@ -11,10 +11,11 @@ import {
 import MainMenu from "./screens/MainMenu";
 import MainGame from "./screens/MainGame";
 
+import SoundManagerComponent from "./sound/SoundManagerComponent";
+
 function App() {
   return (
     <div className="App">
-      
       <Router>
           <Switch>
             <Route path="/singlePlayerGame">
@@ -25,6 +26,7 @@ function App() {
             </Route>
           </Switch>
       </Router>
+      <SoundManagerComponent />
     </div>
   );
 }

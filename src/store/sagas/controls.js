@@ -1,12 +1,21 @@
 import { connect } from 'react-redux';
 import { call, select, put, takeEvery, takeLatest } from 'redux-saga/effects'
 
-
-
 import { INPUT_MOVE, INPUT_ROTATE, INPUT_PAUSE_RESUME } from "../actions/input";
 import { moveDown, moveLeft, moveRight, rotateLeft, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT, rotateRight } from "../actions/block"
 import { canMoveDown,canMoveLeft, canMoveRight, canRotateLeft, canRotateRight  } from "../utils/moveValidations";
 import { togglePauseGame } from "../actions/gameStatus";
+import { playSoundEffect } from "../actions/sound";
+
+import {
+    COLLISION_BLOCK_SOUND_ALT, 
+    MOVE_BLOCK_SOUND, 
+    ROTATE_BLOCK_SOUND,
+    GAME_OVER_SOUND 
+} from "../../sound/soundNames";
+
+const getCanMoveDown = (state) => { return canMoveDown(state.game); };
+
 
 export function* onInputMove(action) {
     let gameState = yield select(); gameState = gameState.game; 
@@ -17,19 +26,21 @@ export function* onInputMove(action) {
         case DIRECTION_DOWN:
             if(canMoveDown(gameState))
             {
-                yield put(moveDown());  
-            }        
+                yield put(moveDown());
+            }      
             break;
         case DIRECTION_LEFT:
             if(canMoveLeft(gameState))
             {
                 yield put(moveLeft());
+                yield put(playSoundEffect(MOVE_BLOCK_SOUND));  
             }
             break;
         case DIRECTION_RIGHT: 
             if(canMoveRight(gameState))
             {
                 yield put(moveRight());
+                yield put(playSoundEffect(MOVE_BLOCK_SOUND));    
             }
             break;        
         default:
@@ -53,6 +64,7 @@ export function* onInputRotate(action) {
             {
                 //console.log("ROTATE LEFT", canMoveRotateLeft);
                 yield put(rotateLeft());
+                yield put(playSoundEffect(ROTATE_BLOCK_SOUND));  
             }
             break;
         case DIRECTION_RIGHT:
@@ -61,6 +73,8 @@ export function* onInputRotate(action) {
             {
                 //console.log("ROTATE RIGHT", canMoveRotateRight);
                 yield put(rotateRight());
+                yield put(playSoundEffect(ROTATE_BLOCK_SOUND));  
+
             }
             break;    
         default:
@@ -70,6 +84,7 @@ export function* onInputRotate(action) {
 
 export function* onInputPauseResume(action) {
     yield put(togglePauseGame());
+    yield put(playSoundEffect(GAME_OVER_SOUND));  
 }
 
 export function* gameControlsMain() {

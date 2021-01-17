@@ -6,12 +6,14 @@ import game from "./reducers/game";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import { startGame } from './sagas';
 import { gameControlsMain } from './sagas/controls';
+import { gameSoundMain } from './sagas/sound';
 
 
 function* rootSaga() {
     yield all([
         startGame(),
-        gameControlsMain()
+        gameControlsMain(),
+        gameSoundMain()
     ])
 }
 
