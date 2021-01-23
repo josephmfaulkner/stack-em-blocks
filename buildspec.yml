@@ -9,5 +9,6 @@ phases:
       - npm run-script build
 artifacts:
   files:
-    - build/**/*
-  name: stackemblocks-$(date +%Y-%m-%d) 
+    - '**/*'
+  base-directory: build  
+  name: stackemblocks-$(date +%Y-%m-%d::%H:%M:%S%s) 
