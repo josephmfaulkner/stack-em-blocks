@@ -10,5 +10,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: build  
+  base-directory: bin  
   name: stackemblocks-$(date +%Y-%m-%d::%H:%M:%S%s) 
