@@ -27,6 +27,11 @@ function App() {
           </Switch>
       </Router>
       <SoundManagerComponent />
+      <div style={{position : 'fixed', bottom: 0, right: 0}}>
+        <p style={{backgroundColor: 'white', margin: 0}}>
+          {process.env.REACT_APP_ENVIRONMENT_NAME}
+        </p>
+      </div>
     </div>
   );
 }
