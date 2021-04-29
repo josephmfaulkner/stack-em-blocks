@@ -4,9 +4,6 @@
 ![Main Gameplay](/screenshots/main-gameplay.gif)
 
 
-
-
-
 - - - -
 
 ## Getting Started
@@ -35,3 +32,15 @@ npm start
 By default, the project will run on [localhost:3000](http://localhost:3000/)
 
 - - - -
+
+## Deploying Infrastructure
+The cloud resources can be provisioned automatically using Terraform 
+
+### You will need: 
+* [Terraform (v0.13.0)](https://www.terraform.io/downloads.html)
+```
+cd infrastructure/heroku
+terraform init -var-file="secret.tfvars"
+terraform plan -var-file="secret.tfvars"
+terraform apply -var-file="secret.tfvars"
+```
