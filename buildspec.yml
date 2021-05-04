@@ -1,5 +1,9 @@
 version: 0.2
 
+env:
+  variables:
+    NODE_ENV: "${env}"
+
 phases:
   install:
     commands:
@@ -7,8 +11,9 @@ phases:
   build:
     commands:
       - npm run-script build
+
 artifacts:
   files:
     - '**/*'
-  base-directory: bin  
+  base-directory: build
   name: stackemblocks-$(date +%Y-%m-%d::%H:%M:%S%s) 
