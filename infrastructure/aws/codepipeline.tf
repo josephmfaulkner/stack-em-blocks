@@ -65,12 +65,49 @@ resource "aws_codepipeline" "static_web_pipeline" {
     }
   }
   stage {
-    name = "Deploy"
+    name = "DeployToTesting"
 
     action {
       category = "Deploy"
       configuration = {
         "BucketName" = aws_s3_bucket.static_site_bucket.id
+        "Extract"    = "true"
+      }
+      input_artifacts = [
+        "BuildArtifact",
+      ]
+      name             = "Deploy"
+      output_artifacts = []
+      owner            = "AWS"
+      provider         = "S3"
+      run_order        = 1
+      version          = "1"
+    }
+  }
+
+  stage {
+    name = "ApproveToProduction"
+
+    action {
+      name     = "Approval"
+      category = "Approval"
+      owner    = "AWS"
+      provider = "Manual"
+      version  = "1"
+
+      configuration = {
+          ExternalEntityLink = "http://${aws_s3_bucket.static_site_bucket.website_endpoint}"
+      }
+    }
+  }
+
+  stage {
+    name = "DeployToProduction"
+
+    action {
+      category = "Deploy"
+      configuration = {
+        "BucketName" = var.prod_site_bucket_name
         "Extract"    = "true"
       }
       input_artifacts = [

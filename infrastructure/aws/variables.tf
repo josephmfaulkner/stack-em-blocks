@@ -29,7 +29,12 @@ variable "build_bucket_name" {
 }
 
 variable "site_bucket_name" {
-    description = "Name of the S3 bucket where the site shall be hosted"
+    description = "Name of the S3 bucket where the testing site shall be hosted"
+    type = string
+}
+
+variable "prod_site_bucket_name" {
+    description = "Name of the S3 bucket where the production site shall be hosted"
     type = string
 }
 
