@@ -8,7 +8,7 @@
         const x = playerBlock.xPos;
         const y = playerBlock.yPos;
 
-        if(gameGrid == null || gameGrid == undefined || blockData == null || blockData == undefined)
+        if(gameGrid === null || gameGrid === undefined || blockData === null || blockData === undefined)
         {
             return true; 
         }
@@ -33,7 +33,7 @@
         const x = playerBlock.xPos;
         const y = playerBlock.yPos;
 
-        if(gameGrid == null || gameGrid == undefined || blockData == null || blockData == undefined)
+        if(gameGrid === null || gameGrid === undefined || blockData === null || blockData === undefined)
         {
             return true; 
         }

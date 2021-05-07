@@ -1,4 +1,4 @@
-import { newBlank2dArray, copy2dArray } from "../utils/misc";
+import { newBlank2dArray } from "../utils/misc";
 
 import { MOVE_BLOCK, ROTATE_BLOCK, REPLACE_PLAYER_BLOCK } from "../actions/block";
 import { CLEAR_FILLED_ROWS, SHIFT_CLEARED_ROWS, ADD_PLAYER_BLOCK_TO_GRID } from "../actions/gameGrid";

@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import Modal from 'react-modal';
 
@@ -8,11 +7,6 @@ import Modal from 'react-modal';
 import "./Popup.css";
 
 class PopupPaused extends React.Component {
-
-  constructor(props)
-  {
-      super(props);
-  }
 
   render()
   {

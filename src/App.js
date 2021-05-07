@@ -4,8 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import {
   MemoryRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import MainMenu from "./screens/MainMenu";

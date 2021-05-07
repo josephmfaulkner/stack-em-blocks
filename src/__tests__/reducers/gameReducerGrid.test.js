@@ -2,7 +2,7 @@
 //import { clearFilledRows, shiftClearedRowsDown } from "../store/modelUtils/gameGrid";
 
 import game from "../../store/reducers/game";
-import { addPlayerBlockToGrid, clearFilledRows ,shiftClearedRows } from "../../store/actions/gameGrid";
+import { clearFilledRows ,shiftClearedRows } from "../../store/actions/gameGrid";
 
 
 it('clearFilledRows (all)', () => {

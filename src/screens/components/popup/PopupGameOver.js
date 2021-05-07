@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import Modal from 'react-modal';
 
@@ -9,13 +8,7 @@ import "./Popup.css";
 
 class PopupGameOver extends React.Component {
 
-  constructor(props)
-  {
-      super(props);
-  }
-
-  render()
-  {
+  render() {
     return (
         <Modal
         isOpen={this.props.modalOpen}

@@ -1,5 +1,4 @@
-import { connect } from 'react-redux';
-import { call, select, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { select, put, takeLatest } from 'redux-saga/effects'
 
 import { INPUT_MOVE, INPUT_ROTATE, INPUT_PAUSE_RESUME } from "../actions/input";
 import { moveDown, moveLeft, moveRight, rotateLeft, DIRECTION_DOWN, DIRECTION_LEFT, DIRECTION_RIGHT, rotateRight } from "../actions/block"
@@ -8,13 +7,10 @@ import { togglePauseGame } from "../actions/gameStatus";
 import { playSoundEffect } from "../actions/sound";
 
 import {
-    COLLISION_BLOCK_SOUND_ALT, 
     MOVE_BLOCK_SOUND, 
     ROTATE_BLOCK_SOUND,
     GAME_OVER_SOUND 
 } from "../../sound/soundNames";
-
-const getCanMoveDown = (state) => { return canMoveDown(state.game); };
 
 
 export function* onInputMove(action) {

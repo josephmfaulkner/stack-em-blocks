@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 
 import { connect } from 'react-redux';
-import { startGame, restartGame, togglePauseGame, gameOver, exitGame } from '../store/actions/gameStatus';
+import { startGame, restartGame, togglePauseGame, exitGame } from '../store/actions/gameStatus';
 import { getGameStateAsGrid } from "../store/utils/gameGrid";
 
 import GameGridDisplay from "./components/GameGridDisplay";
@@ -41,7 +41,7 @@ class MainGame extends React.Component {
     }
       
     updateWindowDimensions() {
-        if(this.props.gameGrid != undefined) {
+        if(this.props.gameGrid !== undefined) {
             const rowsNum = this.props.gameGrid.length; if(rowsNum <= 0) {return;}
             const colsNum = this.props.gameGrid[0].length;
             const blockWidth = window.innerHeight / rowsNum;

@@ -44,7 +44,7 @@ export default class SoundLoader {
                 }
                 loader.soundMap[soundName] = buffer;
 
-                if (++loader.loadCount == loader.soundCount)
+                if (++loader.loadCount === loader.soundCount)
                 {
                     loader.onloadCallback(loader.soundMap);
                 }

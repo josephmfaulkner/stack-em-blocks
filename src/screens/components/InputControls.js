@@ -5,10 +5,6 @@ import { connect } from 'react-redux';
 const Mousetrap = require("mousetrap");
 class InputControls extends React.Component {
     
-    constructor(props){
-        super(props);
-    }
-
     render()
     {
         return (<div className="inputControls"></div>)

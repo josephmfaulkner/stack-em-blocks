@@ -2,7 +2,7 @@ function BufferLoader(context, urlList, callback) {
     this.context = context;
     this.urlList = urlList;
     this.onload = callback;
-    this.bufferList = new Array();
+    this.bufferList = [];
     this.loadCount = 0;
   }
   
@@ -20,11 +20,11 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
         request.response,
         function(buffer) {
           if (!buffer) {
-            alert('error decoding file data: ' + url);
+            console.error('error decoding file data: ', url);
             return;
-        }
+          }
         loader.bufferList[index] = buffer;
-        if (++loader.loadCount == loader.urlList.length)
+        if (++loader.loadCount === loader.urlList.length)
         loader.onload(loader.bufferList);
     },
     function(error) {

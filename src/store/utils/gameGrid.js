@@ -9,7 +9,7 @@ const addBlockToGrid = function(block, gameGrid)
     let xOffset = block.xPos;
     let yOffset = block.yPos;
 
-    if(blockData == null || blockData == undefined)
+    if(blockData === null || blockData === undefined)
     {
         return newGrid;
     }
@@ -31,7 +31,7 @@ const rowIsAllFilled = function(row)
 {
     for(let i = 0; i < row.length; i++)
     {
-        if(row[i] == 0) {return false;}
+        if(row[i] === 0) {return false;}
     }
     return true;
 }
@@ -63,7 +63,7 @@ const rowIsAllBlank= function(row)
 {
     for(let i = 0; i < row.length; i++)
     {
-        if(row[i] != 0) {return false;}
+        if(row[i] !== 0) {return false;}
     }
     return true;
 }
@@ -100,7 +100,7 @@ const getGameStateAsGrid = function(gameState)
     const playerGrid = gameState.grid;
     const playerBlock = gameState.playerBlock;
 
-    if(playerBlock != null && playerBlock != undefined)
+    if(playerBlock !== null && playerBlock !== undefined)
     {
         return addBlockToGrid(playerBlock, playerGrid);
     }
@@ -109,11 +109,5 @@ const getGameStateAsGrid = function(gameState)
         return copy2dArray(playerGrid);
     }
 }
-
-const isGameOver = function(gameGrid)
-{
-
-}
-
 
 export { addBlockToGrid, clearFilledRows, shiftClearedRowsDown, getGameStateAsGrid };

@@ -1,5 +1,5 @@
 import game from "../../store/reducers/game";
-import { replacePlayerBlock, moveDown, moveLeft, moveRight, rotateLeft } from "../../store/actions/block";
+import { replacePlayerBlock, moveDown, moveLeft, moveRight } from "../../store/actions/block";
 import { addPlayerBlockToGrid } from "../../store/actions/gameGrid";
 import * as Block from "../../store/utils/blockConstants";
 import { getGameStateAsGrid } from "../../store/utils/gameGrid";

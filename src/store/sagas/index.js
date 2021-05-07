@@ -1,8 +1,7 @@
-import { connect } from 'react-redux';
-import { call, select, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { select, put, takeLatest } from 'redux-saga/effects'
 
 
-import { START_GAME, RESTART_GAME, PAUSE_RESUME_GAME, gameOver, incrementGameScore } from "../actions/gameStatus";
+import { START_GAME, RESTART_GAME, gameOver, incrementGameScore } from "../actions/gameStatus";
 import { clearFilledRows, shiftClearedRows, addPlayerBlockToGrid } from "../actions/gameGrid";
 import { moveDown, replacePlayerBlock } from "../actions/block"
 import { getRandomBlock } from "../utils/blockConstants";
@@ -10,7 +9,6 @@ import { canMoveDown, isGameOver } from "../utils/moveValidations";
 import * as GameGridUtil from "../utils/gameGrid";
 
 import { 
-    COLLISION_BLOCK_SOUND,
     COLLISION_BLOCK_SOUND_ALT,
     CLEAR_BLOCK_SOUND, 
     SHIFT_BLOCK_SOUND, 

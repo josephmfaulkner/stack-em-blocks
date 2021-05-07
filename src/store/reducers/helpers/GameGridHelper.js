@@ -17,7 +17,7 @@ export default class GameGridHelper {
 
     static clearFilledRows(state) {
         const grid = state.grid;
-        const { newGrid , scoredPoints } = clearFilledRows(grid);
+        const { newGrid } = clearFilledRows(grid);
 
         const newState = {
             ...state,

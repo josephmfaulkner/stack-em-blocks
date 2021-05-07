@@ -7,11 +7,6 @@ import { mapBlockNumberToColorClass } from "./util";
 
 class GameGridDisplay extends React.Component {
     
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         if(!this.props.gameGrid){ return <div></div>;}

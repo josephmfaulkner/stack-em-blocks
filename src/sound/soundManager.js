@@ -4,8 +4,6 @@ import SoundLoader from "./SoundLoader";
 
 import { soundMapping } from "./soundNames";
 
-const DEFAULT_BACKGROUND_SOUND = "";
-
 class SoundManager 
 {
     constructor()
@@ -29,7 +27,7 @@ class SoundManager
 
     loadSounds(newSoundsMap = null)
     {
-        if(newSoundsMap == null)
+        if(newSoundsMap === null)
         {
             newSoundsMap = soundMapping;
         }
@@ -90,7 +88,7 @@ class SoundManager
     //SOUND EFFECTS   
     playSoundEffect(soundEffectName)
     {
-        if( this.soundMap == null || this.soundMap == undefined )
+        if( this.soundMap === null || this.soundMap === undefined )
         {
             return; 
         }
@@ -118,7 +116,7 @@ class SoundManager
 let soundManagerInstance = null; 
 const getSoundManager = function()
 {
-    if(soundManagerInstance == null || soundManagerInstance == undefined)
+    if(soundManagerInstance === null || soundManagerInstance === undefined)
     {
         soundManagerInstance = new SoundManager();
     }
