@@ -8,6 +8,10 @@ phases:
   install:
     commands:
       - npm install
+  pre_build:
+    commands: 
+      - npm run-script lint
+      - npm run-script run-unit-tests   
   build:
     commands:
       - npm run-script build

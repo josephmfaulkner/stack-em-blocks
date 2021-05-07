@@ -31,6 +31,7 @@
     "build-all": "yarn-or-npm run build-test && yarn-or-npm run build-prod",
     "lint": "node_modules/.bin/eslint --ext js src",
     "test": "react-scripts test",
+    "run-unit-tests": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
