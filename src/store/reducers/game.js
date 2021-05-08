@@ -2,7 +2,7 @@ import { newBlank2dArray } from "../utils/misc";
 
 import { MOVE_BLOCK, ROTATE_BLOCK, REPLACE_PLAYER_BLOCK } from "../actions/block";
 import { CLEAR_FILLED_ROWS, SHIFT_CLEARED_ROWS, ADD_PLAYER_BLOCK_TO_GRID } from "../actions/gameGrid";
-import { INCREMENT_GAME_SCORE, RESTART_GAME, PAUSE_RESUME_GAME, GAME_OVER, EXIT_GAME } from "../actions/gameStatus";
+import { INCREMENT_GAME_SCORE, RESTART_GAME, START_GAME, PAUSE_RESUME_GAME, GAME_OVER } from "../actions/gameStatus";
 
 
 import GameBlockHelper from "./helpers/GameBlockHelper";
@@ -52,9 +52,9 @@ const game = function(state = defaultState, action)
             return GameStatusHelper.togglePaused(state);
         case GAME_OVER:
             return GameStatusHelper.gameOver(state);
-        case RESTART_GAME:
+        case START_GAME:
             return defaultState;
-        case EXIT_GAME:
+        case RESTART_GAME:
             return defaultState;
         default:
             return state;

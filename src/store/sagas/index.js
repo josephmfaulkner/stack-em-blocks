@@ -1,7 +1,7 @@
-import { select, put, takeLatest } from 'redux-saga/effects'
+import { select, put, takeLatest, call } from 'redux-saga/effects'
 
 
-import { START_GAME, RESTART_GAME, gameOver, incrementGameScore } from "../actions/gameStatus";
+import { START_GAME, RESTART_GAME, PAUSE_RESUME_GAME, gameOver, incrementGameScore } from "../actions/gameStatus";
 import { clearFilledRows, shiftClearedRows, addPlayerBlockToGrid } from "../actions/gameGrid";
 import { moveDown, replacePlayerBlock } from "../actions/block"
 import { getRandomBlock } from "../utils/blockConstants";
@@ -24,7 +24,7 @@ const getRowsToClear = (state) => { return { ...GameGridUtil.clearFilledRows(sta
 
 export function* mainGameLoop(action) {
     
-    yield put(replacePlayerBlock(getRandomBlock()));
+    
     while(true)
     {
         if(yield select(getGameOver))
@@ -36,8 +36,8 @@ export function* mainGameLoop(action) {
 
         if(yield select(getGamePaused))
         {
-            yield delay(500);
-            continue;
+            //yield delay(500);
+            break;
         }
 
         if(yield select(getCanMoveDown))
@@ -68,13 +68,18 @@ export function* mainGameLoop(action) {
             yield put(replacePlayerBlock(getRandomBlock()));
         }
 
-        
-
     }
     
 }
 
-export function* startGame() {
-    yield takeLatest(START_GAME, mainGameLoop);
-    yield takeLatest(RESTART_GAME, mainGameLoop);
+export function* startNewGame() {
+    yield put(replacePlayerBlock(getRandomBlock()));
+    yield call(mainGameLoop);
+}
+
+export function* mainGameSaga() {
+    yield takeLatest(START_GAME, startNewGame);
+    yield takeLatest(RESTART_GAME, startNewGame);
+    yield takeLatest(PAUSE_RESUME_GAME, mainGameLoop);
+    
 }

@@ -4,14 +4,14 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import game from "./reducers/game";
 
 import {composeWithDevTools} from 'redux-devtools-extension';
-import { startGame } from './sagas';
+import { mainGameSaga } from './sagas';
 import { gameControlsMain } from './sagas/controls';
 import { gameSoundMain } from './sagas/sound';
 
 
 function* rootSaga() {
     yield all([
-        startGame(),
+        mainGameSaga(),
         gameControlsMain(),
         gameSoundMain()
     ])
