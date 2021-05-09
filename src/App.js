@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import MainMenu from "./screens/MainMenu";
-import NewMainMenu from "./screens/NewMainMenu";
 import MainGame from "./screens/MainGame";
 
 import SoundManagerComponent from "./sound/SoundManagerComponent";
@@ -22,7 +21,7 @@ function App() {
               <MainGame />
             </Route>
             <Route path="/">
-              <NewMainMenu />
+              <MainMenu />
             </Route>
           </Switch>
       </Router>

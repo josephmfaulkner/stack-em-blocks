@@ -3,7 +3,7 @@ import { all } from 'redux-saga/effects';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import game from "./reducers/game";
 
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { mainGameSaga } from './sagas';
 import { gameControlsMain } from './sagas/controls';
 import { gameSoundMain } from './sagas/sound';
