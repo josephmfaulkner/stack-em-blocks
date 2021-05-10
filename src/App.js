@@ -17,10 +17,10 @@ function App() {
     <div className="App">
       <Router>
           <Switch>
-            <Route path="/singlePlayerGame">
+            <Route path="/singlePlayerGame" /*path="/singlePlayerGame"*/ >
               <MainGame />
             </Route>
-            <Route path="/">
+            <Route path="/" >
               <MainMenu />
             </Route>
           </Switch>

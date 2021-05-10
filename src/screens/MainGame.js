@@ -9,6 +9,7 @@ import { startGame, restartGame, togglePauseGame, exitGame } from '../store/acti
 import { getGameStateAsGrid } from "../store/utils/gameGrid";
 
 import GameGridDisplay from "./components/GameGridDisplay";
+import GameStatsDisplay from "./components/GameStatsDisplay";
 import InputControls from "./components/InputControls";
 import PauseButton from "./components/PauseButton";
 
@@ -70,6 +71,7 @@ class MainGame extends React.Component {
        return (   
            <div>
             <PauseButton isVisible={!modalOpen} onClick={this.onResumeClick.bind(this)}/>   
+            <GameStatsDisplay isVisible={!modalOpen} gameScore={this.props.gameScore} blockCount={this.props.blockCount}/>
             <div className={className} style={{maxWidth : this.state.maxWidth}}>
                 
                 <GameGridDisplay gameGrid={this.props.gameGrid} maxWidth={this.state.maxWidth}/>
@@ -97,6 +99,7 @@ class MainGame extends React.Component {
 const mapStateToProps = (state) => {
     return {
       gameScore: state.game.stats.score,
+      blockCount: state.game.stats.blockCount,
       gameLevel: state.game.stats.level,  
       gameGrid: getGameStateAsGrid(state.game),
       playerBlock: state.game.playerBlock,

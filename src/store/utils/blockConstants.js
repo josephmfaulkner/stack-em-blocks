@@ -56,7 +56,10 @@ const RAND_BLOCK_MAP = {
 
 const getRandomBlock = function(){
     let randomIndex = Math.floor(Math.random() * Math.floor(7));
-    return RAND_BLOCK_MAP[randomIndex];
+    return {
+        blockIndex : randomIndex,
+        blockData : RAND_BLOCK_MAP[randomIndex]
+    };
 }
 
 export {

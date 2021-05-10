@@ -2,6 +2,7 @@ import { select, put, takeLatest, call } from 'redux-saga/effects'
 
 
 import { START_GAME, RESTART_GAME, PAUSE_RESUME_GAME, gameOver, incrementGameScore } from "../actions/gameStatus";
+import { incrementBlockCount } from "../actions/gameStats"
 import { clearFilledRows, shiftClearedRows, addPlayerBlockToGrid } from "../actions/gameGrid";
 import { moveDown, replacePlayerBlock } from "../actions/block"
 import { getRandomBlock } from "../utils/blockConstants";
@@ -65,7 +66,9 @@ export function* mainGameLoop(action) {
                 yield put(playSoundEffect(SHIFT_BLOCK_SOUND));
                 yield put(incrementGameScore( rowsToClear ));
             }
-            yield put(replacePlayerBlock(getRandomBlock()));
+            let nextBlock = yield call(getRandomBlock);
+            yield put(replacePlayerBlock(nextBlock.blockData));
+            yield put(incrementBlockCount(nextBlock.blockIndex));
         }
 
     }
@@ -73,7 +76,10 @@ export function* mainGameLoop(action) {
 }
 
 export function* startNewGame() {
-    yield put(replacePlayerBlock(getRandomBlock()));
+    let nextBlock = yield call(getRandomBlock);
+
+    yield put(replacePlayerBlock(nextBlock.blockData));
+    yield put(incrementBlockCount(nextBlock.blockIndex));
     yield call(mainGameLoop);
 }
 

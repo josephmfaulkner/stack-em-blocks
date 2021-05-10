@@ -3,6 +3,7 @@ import { newBlank2dArray } from "../utils/misc";
 import { MOVE_BLOCK, ROTATE_BLOCK, REPLACE_PLAYER_BLOCK } from "../actions/block";
 import { CLEAR_FILLED_ROWS, SHIFT_CLEARED_ROWS, ADD_PLAYER_BLOCK_TO_GRID } from "../actions/gameGrid";
 import { INCREMENT_GAME_SCORE, RESTART_GAME, START_GAME, PAUSE_RESUME_GAME, GAME_OVER } from "../actions/gameStatus";
+import { INCREMENT_BLOCK_COUNT } from "../actions/gameStats";
 
 
 import GameBlockHelper from "./helpers/GameBlockHelper";
@@ -21,7 +22,16 @@ const defaultState = {
         paused: false,
         gameOver: false,
         level: 1,
-        score: 0
+        score: 0,
+        blockCount : {
+            0: 0,
+            1: 0,
+            2: 0,
+            3: 0,
+            4: 0,
+            5: 0,
+            6: 0
+        }
     } 
 }
 
@@ -48,6 +58,9 @@ const game = function(state = defaultState, action)
         case INCREMENT_GAME_SCORE:
             const incrementAmount = action.payload; 
             return GameStatusHelper.incrementGameScore(state, incrementAmount);
+        case INCREMENT_BLOCK_COUNT:
+            const blockCountIncAmount = action.payload;
+            return GameStatusHelper.incrementBlockCount(state, blockCountIncAmount);    
         case PAUSE_RESUME_GAME:
             return GameStatusHelper.togglePaused(state);
         case GAME_OVER:

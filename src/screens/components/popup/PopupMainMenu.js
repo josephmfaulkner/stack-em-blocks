@@ -27,7 +27,7 @@ class PopupMainMenu extends React.Component {
         >
         <h1>Stack Em Blocks <i className="fas fa-cubes"></i></h1>     
         <div>
-            <button onClick={() => {this.props.onClickStartGame(); console.log("Click Start");}}>
+            <button onClick={() => {this.props.onClickStartGame();}}>
               <i className="fa fa-play"></i>
             </button>
             <button>

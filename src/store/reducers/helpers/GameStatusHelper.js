@@ -28,6 +28,21 @@ export default class GameStatusHelper {
         return newState;
     }
 
+    static incrementBlockCount(state, blockNumber) {
+        const newBlockCount = { ...state.stats.blockCount };
+        newBlockCount[blockNumber]++; 
+
+        const newStats = { ...state.stats, blockCount: newBlockCount };
+
+        const newState = {
+            ...state,
+            stats: newStats
+        }
+
+        return newState;
+
+    }
+
     static gameOver(state) {
         const newStats = { ...state.stats, gameOver: true };
 
