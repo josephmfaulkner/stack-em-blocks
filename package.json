@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "copyfiles": "^2.4.1",
     "dotenv-cli": "^4.0.0",
+    "hammerjs": "^2.0.8",
     "mousetrap": "^1.6.5",
     "move-file-cli": "^2.0.0",
     "react": "^17.0.1",

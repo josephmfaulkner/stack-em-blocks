@@ -11,6 +11,7 @@ import { getGameStateAsGrid } from "../store/utils/gameGrid";
 import GameGridDisplay from "./components/GameGridDisplay";
 import GameStatsDisplay from "./components/GameStatsDisplay";
 import InputControls from "./components/InputControls";
+import InputTouchScreenControls from "./components/InputTouchScreenControls";
 import PauseButton from "./components/PauseButton";
 
 import PopupPaused from "./components/popup/PopupPaused";
@@ -24,7 +25,9 @@ class MainGame extends React.Component {
     {
         super(props)
         this.state = { 
-            maxWidth: 0
+            maxWidth: 0,
+            blockWidth: 1,
+            touchSensitivity: 10,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         
@@ -48,6 +51,7 @@ class MainGame extends React.Component {
             const blockWidth = window.innerHeight / rowsNum;
             const maxWidth = blockWidth * colsNum;
             this.setState({ maxWidth });
+            this.setState({ blockWidth });
         }
     }
 
@@ -74,7 +78,11 @@ class MainGame extends React.Component {
             <GameStatsDisplay isVisible={!modalOpen} gameScore={this.props.gameScore} blockCount={this.props.blockCount}/>
             <div className={className} style={{maxWidth : this.state.maxWidth}}>
                 
-                <GameGridDisplay gameGrid={this.props.gameGrid} maxWidth={this.state.maxWidth}/>
+                <InputTouchScreenControls moveThreshold={ this.state.blockWidth * (1 / this.state.touchSensitivity)} >
+                    <GameGridDisplay gameGrid={this.props.gameGrid} maxWidth={this.state.maxWidth}/>
+                </InputTouchScreenControls>
+                
+                
                 <PopupPaused 
                         modalOpen={this.props.paused && ! this.props.gameOver} 
                         onResumeClick={this.onResumeClick.bind(this)} 
