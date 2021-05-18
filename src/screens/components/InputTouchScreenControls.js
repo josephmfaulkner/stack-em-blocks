@@ -16,7 +16,9 @@ class InputTouchScreenControls extends React.Component {
         }
     }
 
-    handlePanLeft() {
+    handlePanLeft(event) {
+        const { overallVelocityX, velocityX } = {...event };
+        console.log("VelocityX", overallVelocityX, velocityX);
         if(this.state.panLeftTick >= this.props.moveThreshold)
         {
             this.setState({panLeftTick: 0});
@@ -24,12 +26,14 @@ class InputTouchScreenControls extends React.Component {
         }
         else
         {
-            this.setState({panLeftTick: this.state.panLeftTick + 1});
+            this.setState({panLeftTick: this.state.panLeftTick + 1 * Math.abs(overallVelocityX)});
         }
     }
 
 
-    handlePanRight() {
+    handlePanRight(event) {
+        const { overallVelocityX, velocityX } = {...event };
+        console.log("VelocityX", overallVelocityX, velocityX);
         if(this.state.panRightTick >= this.props.moveThreshold)
         {
             this.setState({panRightTick: 0});
@@ -37,12 +41,15 @@ class InputTouchScreenControls extends React.Component {
         }
         else
         {
-            this.setState({panRightTick: this.state.panRightTick + 1});
+            this.setState({panRightTick: this.state.panRightTick + 1 * Math.abs(overallVelocityX)});
         }
     }
 
 
-    handlePanDown() {
+    handlePanDown(event) {
+        const { overallVelocityY, velocityY } = {...event };
+        console.log("Velocity", overallVelocityY, velocityY);
+        //console.log("Event", event);
         if(this.state.panDownTick >= this.props.moveThreshold)
         {
             this.setState({panDownTick: 0});
@@ -50,7 +57,7 @@ class InputTouchScreenControls extends React.Component {
         }
         else
         {
-            this.setState({panDownTick: this.state.panDownTick + 1});
+            this.setState({panDownTick: this.state.panDownTick + 1 * Math.abs(overallVelocityY) });
         }
     }
     
@@ -62,10 +69,10 @@ class InputTouchScreenControls extends React.Component {
         this.touchScreenControls.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: 0 });
         this.touchScreenControls.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 
-        this.touchScreenControls.on("panleft",  this.handlePanLeft.bind(this)  );
-        this.touchScreenControls.on("panright", this.handlePanRight.bind(this) );
+        this.touchScreenControls.on("panleft",  (event) => { this.handlePanLeft(event); }  );
+        this.touchScreenControls.on("panright", (event) => { this.handlePanRight(event); } );
         
-        this.touchScreenControls.on("pandown",  this.handlePanDown.bind(this)  );
+        this.touchScreenControls.on("pandown",  (event) => { this.handlePanDown(event); }  );
         
         this.touchScreenControls.on("swipeup", () => { this.props.inputRotateRight(); });
 

@@ -27,7 +27,7 @@ class MainGame extends React.Component {
         this.state = { 
             maxWidth: 0,
             blockWidth: 1,
-            touchSensitivity: 10,
+            touchSensitivity: 50,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         
