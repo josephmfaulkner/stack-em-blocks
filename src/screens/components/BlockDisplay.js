@@ -16,7 +16,7 @@ class BlockDisplay extends React.Component {
                     {this.props.blockData.map((row, indexRow) =>
                         <div key={indexRow} className="BlockStatGridDisplaygridRow">
                             {row.map((blockNumber, indexColumn) =>{
-                                let classNames = "gridBlock " + mapBlockNumberToColorClass(blockNumber);
+                                let classNames = "gridBlock gridBlockDisplay " + mapBlockNumberToColorClass(blockNumber);
                                 let divKey = `${indexRow}-${indexColumn}`;
                                 return(
                                     <div key={divKey} className={classNames}></div>  

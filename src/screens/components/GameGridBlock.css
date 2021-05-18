@@ -47,3 +47,8 @@
     float:left;
     padding-top:100%;
 }
+
+.gridBlockDisplay {
+    border: none !important;
+
+}

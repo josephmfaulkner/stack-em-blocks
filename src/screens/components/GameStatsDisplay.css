@@ -1,137 +1,286 @@
-
-/*
-
-.GameStatsDisplay {
-    padding: 0px;
-    top: 100px;
-    right: 15px;
-    z-index: 1000;
-    position:fixed;  
-    text-align: center;
-    font-family:inherit;
-    font-size: inherit;
-    font-size: 275%;
-    padding: 0px;
-    border: none;
-    border-radius: 100px;
-    outline: none;
-    background-color: white !important;
-    padding: 10px;
-    text-shadow: 4px 4px 2px rgb(31, 31, 31);
-    black 
-    width: 100px;
-    height: 200px;
-}
-
-
-.PopupBackgroundContent {
-    filter: blur(9px);
-    -webkit-filter: blur(8px);
-}
-
-.PopupOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.20);
-} 
-
-.PopupOverlayPaused {
-
-}
-
-*/
-
-.GameStatsDisplayHidden {
-    display: none !important;
-}
-
-.GameStatsDisplay
-{
+@media screen and (min-width: 600px) {
     /*
 
-    position: absolute;
-    top    : 50%;
-    left   : 50%;
-    right  : auto;
-    bottom : auto;
-    margin-right : -50%;
-    transform : translate(-50%, -50%);
-    width: 25em;
-    max-width: 100%;
+    .GameStatsDisplay {
+        padding: 0px;
+        top: 100px;
+        right: 15px;
+        z-index: 1000;
+        position:fixed;  
+        text-align: center;
+        font-family:inherit;
+        font-size: inherit;
+        font-size: 275%;
+        padding: 0px;
+        border: none;
+        border-radius: 100px;
+        outline: none;
+        background-color: white !important;
+        padding: 10px;
+        text-shadow: 4px 4px 2px rgb(31, 31, 31);
+        black 
+        width: 100px;
+        height: 200px;
+    }
 
-    
-    
+
+    .PopupBackgroundContent {
+        filter: blur(9px);
+        -webkit-filter: blur(8px);
+    }
+
+    .PopupOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.20);
+    } 
+
+    .PopupOverlayPaused {
+
+    }
+
     */
-    z-index: 1;
-    user-select: none;
-    position: fixed;
-    right: 15px;
-    top: 50%;
-    transform: translate(0%, -50%);
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    border: 3px solid #2e393a;
-    border-radius: 5px;
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.75);
-    outline: none !important;
-    -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
-    box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
 
-} 
+    .GameStatsDisplayHidden {
+        display: none !important;
+    }
 
-.Popup h1, h2 {
+    .GameStatsDisplay
+    {
+        /*
+
+        position: absolute;
+        top    : 50%;
+        left   : 50%;
+        right  : auto;
+        bottom : auto;
+        margin-right : -50%;
+        transform : translate(-50%, -50%);
+        width: 25em;
+        max-width: 100%;
+
+        
+        
+        */
+        z-index: 1;
+        user-select: none;
+        position: fixed;
+        right: 15px;
+        top: 50%;
+        transform: translate(0%, -50%);
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        border: 3px solid #2e393a;
+        border-radius: 5px;
+        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.75);
+        outline: none !important;
+        -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
+        box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
+
+    } 
+
+    .Popup h1, h2 {
+        
+        font-size: 275%;
+        pointer-events: none;
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    .Popup div button {
+        color:inherit;
+        text-align: center;
+        font-family:inherit;
+        font-size: inherit;
+        background: rgba(255, 255, 255, 0.50);
+        font-size: 175%;
+        font-weight: bold;
+        padding: 0.3rem 3.4rem;
+        border: 3px solid black;
+        height: 2.75em;
+        border-radius: 5px;
+        margin-right: 1.6rem;
+        /*box-shadow: 0 0 0 black;*/
+        transition: all 0.2s;
+        width: 100%;
+        margin-bottom: 10px;
+        outline: none !important;
+    }
+
+    .Popup div button i {
+        margin-left: 15px;
+        text-align: right;
+    }
+
+    .Popup div button:hover {
+
+        box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+        /*transform: translate(-0.4rem, -0.4rem);*/
+        transform: scale(1.1,1.1);
+    }
     
-    font-size: 275%;
-    pointer-events: none;
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 10px;
+    .Popup div button:active {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+        transform: translate(0, 0);
+    }
+
+    .PopupPaused
+    {
+        font-family: monospace;
+        text-shadow: 1px white;
+    }
 }
 
-.Popup div button {
-    color:inherit;
-    text-align: center;
-    font-family:inherit;
-    font-size: inherit;
-    background: rgba(255, 255, 255, 0.50);
-    font-size: 175%;
-    font-weight: bold;
-    padding: 0.3rem 3.4rem;
-    border: 3px solid black;
-    height: 2.75em;
-    border-radius: 5px;
-    margin-right: 1.6rem;
-    /*box-shadow: 0 0 0 black;*/
-    transition: all 0.2s;
-    width: 100%;
-    margin-bottom: 10px;
-    outline: none !important;
-}
+@media screen and (max-width: 600px) {
+    /*
 
-.Popup div button i {
-    margin-left: 15px;
-    text-align: right;
-}
+    .GameStatsDisplay {
+        padding: 0px;
+        top: 100px;
+        right: 15px;
+        z-index: 1000;
+        position:fixed;  
+        text-align: center;
+        font-family:inherit;
+        font-size: inherit;
+        font-size: 275%;
+        padding: 0px;
+        border: none;
+        border-radius: 100px;
+        outline: none;
+        background-color: white !important;
+        padding: 10px;
+        text-shadow: 4px 4px 2px rgb(31, 31, 31);
+        black 
+        width: 100px;
+        height: 200px;
+    }
 
-.Popup div button:hover {
 
-    box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
-    /*transform: translate(-0.4rem, -0.4rem);*/
-    transform: scale(1.1,1.1);
-  }
-  
-.Popup div button:active {
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
-    transform: translate(0, 0);
-  }
+    .PopupBackgroundContent {
+        filter: blur(9px);
+        -webkit-filter: blur(8px);
+    }
 
-.PopupPaused
-{
-    font-family: monospace;
-    text-shadow: 1px white;
+    .PopupOverlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.20);
+    } 
+
+    .PopupOverlayPaused {
+
+    }
+
+    */
+
+    .GameStatsDisplayHidden {
+        display: none !important;
+    }
+
+    .GameStatsDisplay
+    {
+        /*
+
+        position: absolute;
+        top    : 50%;
+        left   : 50%;
+        right  : auto;
+        bottom : auto;
+        margin-right : -50%;
+        transform : translate(-50%, -50%);
+        width: 25em;
+        max-width: 100%;
+
+        
+        
+        */
+        z-index: 1;
+        user-select: none;
+        position: fixed;
+        right: 50%;
+        top: 0%;
+        transform: translate(50%, 0%);
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        /*border: 3px solid #2e393a;*/
+        border-radius: 5px;
+        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.75);
+        outline: none !important;
+        -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
+        box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
+
+    } 
+
+    .Popup h1, h2 {
+        
+        font-size: 275%;
+        pointer-events: none;
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+
+    .GameStatsDisplay h1, h2 {
+        
+        font-size: 100%;
+        pointer-events: none;
+        text-align: center;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .Popup div button {
+        color:inherit;
+        text-align: center;
+        font-family:inherit;
+        font-size: inherit;
+        background: rgba(255, 255, 255, 0.50);
+        font-size: 175%;
+        font-weight: bold;
+        padding: 0.3rem 3.4rem;
+        border: 3px solid black;
+        height: 2.75em;
+        border-radius: 5px;
+        margin-right: 1.6rem;
+        /*box-shadow: 0 0 0 black;*/
+        transition: all 0.2s;
+        width: 100%;
+        margin-bottom: 10px;
+        outline: none !important;
+    }
+
+    .Popup div button i {
+        margin-left: 15px;
+        text-align: right;
+    }
+
+    .Popup div button:hover {
+
+        box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+        /*transform: translate(-0.4rem, -0.4rem);*/
+        transform: scale(1.1,1.1);
+    }
+    
+    .Popup div button:active {
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+        transform: translate(0, 0);
+    }
+
+    .PopupPaused
+    {
+        font-family: monospace;
+        text-shadow: 1px white;
+    }
 }

@@ -1,3 +1,9 @@
+@media screen and (max-width: 600px) {
+    .PauseButton {
+        top: 35px !important;
+    }
+}
+
 .PauseButton {
     padding: 0px;
     top: 5px;

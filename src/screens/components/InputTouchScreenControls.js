@@ -17,8 +17,7 @@ class InputTouchScreenControls extends React.Component {
     }
 
     handlePanLeft(event) {
-        const { overallVelocityX, velocityX } = {...event };
-        console.log("VelocityX", overallVelocityX, velocityX);
+        const { overallVelocityX } = {...event };
         if(this.state.panLeftTick >= this.props.moveThreshold)
         {
             this.setState({panLeftTick: 0});
@@ -32,8 +31,7 @@ class InputTouchScreenControls extends React.Component {
 
 
     handlePanRight(event) {
-        const { overallVelocityX, velocityX } = {...event };
-        console.log("VelocityX", overallVelocityX, velocityX);
+        const { overallVelocityX } = {...event };
         if(this.state.panRightTick >= this.props.moveThreshold)
         {
             this.setState({panRightTick: 0});
@@ -47,9 +45,7 @@ class InputTouchScreenControls extends React.Component {
 
 
     handlePanDown(event) {
-        const { overallVelocityY, velocityY } = {...event };
-        console.log("Velocity", overallVelocityY, velocityY);
-        //console.log("Event", event);
+        const { overallVelocityY } = {...event };
         if(this.state.panDownTick >= this.props.moveThreshold)
         {
             this.setState({panDownTick: 0});
