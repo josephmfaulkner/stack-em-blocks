@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 
 
-import "./Popup.css";
+import "./Popup.scss";
 
 class PopupMainMenu extends React.Component {
 

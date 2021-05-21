@@ -18,7 +18,7 @@ import PopupPaused from "./components/popup/PopupPaused";
 import PopupGameOver from "./components/popup/PopupGameOver";
 
 
-import "./MainGame.css";
+import "./MainGame.scss";
 class MainGame extends React.Component {
     
     constructor(props)

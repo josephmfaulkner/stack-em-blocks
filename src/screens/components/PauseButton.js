@@ -1,5 +1,5 @@
 import React from "react";
-import "./PauseButton.css";
+import "./PauseButton.scss";
 class PauseButton extends React.Component {
     
     render()

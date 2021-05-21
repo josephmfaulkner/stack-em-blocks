@@ -1,5 +1,5 @@
 import React from "react";
-import "./GameStatsDisplay.css";
+import "./GameStatsDisplay.scss";
 import { BLOCK_DISPLAY_MAP } from "../../store/utils/blockDisplayConstants"; //"../../store/utils/blockDisplayConstants"; 
 
 import BlockDisplay from "./BlockDisplay";

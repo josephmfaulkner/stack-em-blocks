@@ -13,7 +13,7 @@ import { getGameStateAsGrid } from "../store/utils/gameGrid";
 import PopupMainMenu from "./components/popup/PopupMainMenu";
 import GameGridDisplay from "./components/GameGridDisplay";
 
-import "./MainGame.css";
+import "./MainGame.scss";
 class NewMainMenu extends React.Component {
     
     constructor(props)

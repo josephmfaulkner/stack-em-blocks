@@ -1,7 +1,7 @@
 import React from "react";
 
-import "./GameGridBlock.css";
-import "./GameGridDisplay.css";
+import "./GameGridBlock.scss";
+import "./GameGridDisplay.scss";
 
 import { mapBlockNumberToColorClass } from "./util";
 

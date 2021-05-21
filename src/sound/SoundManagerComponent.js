@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { loadSounds } from "../store/actions/sound";
-import "./SoundManagerComponent.css";
+import "./SoundManagerComponent.scss";
 
 class SoundManagerComponent extends React.Component
 {

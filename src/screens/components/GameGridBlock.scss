@@ -1,3 +1,5 @@
+@import '../../vars.scss';
+
 .gridBlock0 {
     background-color: none;
     -webkit-box-shadow: none !important;
@@ -5,32 +7,31 @@
 }
 
 .gridBlock1 {
-     background-color: rgba(255, 0, 0, 0.644);
-
+    background-color: $block1Color;
 }
 
 .gridBlock2 {
-    background-color: rgba(255, 123, 0, 0.644);
+    background-color: $block2Color;
 }
 
 .gridBlock3 {
-    background-color: rgba(255, 255, 0, 0.644);
+    background-color: $block3Color;;
 }
 
 .gridBlock4 {
-     background-color: rgba(0, 255, 0, 0.644);
+    background-color: $block4Color;
 }
 
 .gridBlock5 {
-    background-color: rgba(0, 0, 255, 0.644);
+    background-color: $block5Color;
 }
 
 .gridBlock6 {
-    background-color: rgba(151, 0, 151, 0.644);
+    background-color: $block6Color;
 }
 
 .gridBlock7 {
-    background-color: rgba(0, 252, 252, 0.644);
+    background-color: $block7Color;
 }
 
 .gridBlock {
