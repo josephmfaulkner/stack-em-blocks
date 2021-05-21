@@ -1,3 +1,5 @@
+@import '../../vars.scss';
+
 .GameGridDisplayContainer {
     position: absolute;
     top: 50%;
@@ -9,8 +11,8 @@
 }
 
 .GameGridDisplay  {
-    background-color: black;
-    background-image: linear-gradient(#749494, #333536);
+    background-color: $sideBackgroundColor;
+    background-image: linear-gradient($screenBackgroundColor1, $screenBackgroundColor2);
     margin: auto;
     -webkit-box-shadow: 0px 0px 100px 22px rgba(255,255,255,0.17); 
     box-shadow: 0px 0px 100px 22px rgba(255,255,255,0.17);
