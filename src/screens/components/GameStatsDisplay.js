@@ -9,17 +9,50 @@ class GameStatsDisplay extends React.Component {
     render()
     {
         let randBlockMapKeys = Object.keys(BLOCK_DISPLAY_MAP);
-        const className = this.props.isVisible ? "GameStatsDisplay" : "GameStatsDisplay GameStatsDisplayHidden";
+        const displayClassName = this.props.isMobile ? "GameStatsDisplayMobile" : "GameStatsDisplay" ;
+        const className = this.props.isVisible ? displayClassName : displayClassName + " GameStatsDisplayHidden";
+        
+        const xPos = this.props.xPos; 
+        const style = this.props.isMobile ? {} : {'left' : xPos};
+        
         return(
-            <div className={className}>
-                <h2><i className="fa fa-star"></i> {this.props.gameScore}</h2> 
-                {
-                    randBlockMapKeys.map((key, keyIndex) => 
-                        <div className="BlockStatsDisplayRow" key={keyIndex}>
-                            <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[key]} /> <div>{this.props.blockCount[key]}</div>
+            <div className={className} style={style}>
+                <div className="BlockStatsDisplay">
+                    {
+                        randBlockMapKeys.map((key, keyIndex) => 
+                            <div className="BlockStatsDisplayRow" key={keyIndex}>
+                                <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[key]} /> <div>{this.props.blockCount[key]}</div>
+                            </div>
+                        )
+                    }
+                </div>
+                <div className="OtherStatsDisplay">
+                    <div className="GameScoreDisplay">
+                        <div className="scoreItem">
+                            <h2 className="scoreIcon"><i className="fa fa-trophy"></i></h2>
+                            <h2 className="scoreNumber">{1000}</h2> 
                         </div>
-                    )
-                }
+                        <div className="scoreItem">
+                            <h2 className="scoreIcon"><i className="fa fa-star"></i></h2>
+                            <h2 className="scoreNumber">{this.props.gameScore}</h2> 
+                        </div>
+
+                    </div>
+                    <div className="NextBlockAndLevelDisplay">
+                        <div className="NextBlockDisplay">
+                            <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[1]} />
+                            <h2><i className="fa fa-forward"></i></h2> 
+                        </div>
+                        <div className="scoreItem">
+                            <h2 className="scoreIcon"><i className="fa fa-layer-group"></i></h2>
+                            <h2 className="scoreNumber">{1}</h2> 
+                        </div>
+                    </div>    
+
+
+                </div>
+                
+
             </div>
         );
     }

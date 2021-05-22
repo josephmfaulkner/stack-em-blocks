@@ -1,41 +1,38 @@
-@media screen and (min-width: 600px) {
+
+.GameStatsDisplayHidden {
+    display: none !important;
+}
+
+.GameStatsDisplay
+{
     
+    z-index: 1;
+    user-select: none;
+    position: fixed;
+    top: 50%;
+    transform: translate(0%, -50%);
+    margin: 10px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid #2e393a;
+    border-radius: 5px;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+    color: rgba(255, 255, 255, 0.75);
+    outline: none !important;
+    -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
+    box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
 
-    .GameStatsDisplayHidden {
-        display: none !important;
-    }
-
-    .GameStatsDisplay
-    {
-        
-        z-index: 1;
-        user-select: none;
-        position: fixed;
-        right: 15px;
-        top: 50%;
-        transform: translate(0%, -50%);
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        border: 3px solid #2e393a;
-        border-radius: 5px;
-        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
-        color: rgba(255, 255, 255, 0.75);
-        outline: none !important;
-        -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
-        box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
-
-    } 
 
     .Popup h1, h2 {
-        
+    
         font-size: 275%;
         pointer-events: none;
         text-align: center;
         margin-top: 0px;
         margin-bottom: 10px;
     }
-
+    
     .Popup div button {
         color:inherit;
         text-align: center;
@@ -54,14 +51,14 @@
         margin-bottom: 10px;
         outline: none !important;
     }
-
+    
     .Popup div button i {
         margin-left: 15px;
         text-align: right;
     }
-
+    
     .Popup div button:hover {
-
+    
         box-shadow: 0.4rem 0.4rem 0 rgba(0, 0, 0, 0.2);
         transform: scale(1.1,1.1);
     }
@@ -70,46 +67,122 @@
         box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
         transform: translate(0, 0);
     }
-
+    
     .PopupPaused
     {
         font-family: monospace;
         text-shadow: 1px white;
     }
-}
 
-@media screen and (max-width: 600px) {
-    
-    .GameStatsDisplayHidden {
-        display: none !important;
-    }
+} 
 
-    .GameStatsDisplay
-    {
-        z-index: 1;
+
+.GameStatsDisplayMobile
+{
+    z-index: 1;
+    user-select: none;
+    position: fixed;
+    right: 50%;
+    transform: translate(50%, 0%);
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.75);
+    outline: none !important;
+
+
+    .OtherStatsDisplay {
+
+        z-index: 10;
         user-select: none;
-        position: fixed;
-        right: 50%;
-        top: 0%;
-        transform: translate(50%, 0%);
-        display: inline-flex;
-        flex-direction: row;
-        align-items: center;
         border-radius: 5px;
-        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
         color: rgba(255, 255, 255, 0.75);
         outline: none !important;
-        -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
-        box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
-    } 
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .GameScoreDisplay {
+            display: flex;
+            -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
+            box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
+        }
+
+        .scoreItem{
+            margin: 0px 10px 0px 10px;
+            .scoreIcon {
+                font-size: 120%;
+                pointer-events: none;
+                text-align: center;
+                margin: 0px 0px 0px 0px;
+                z-index: 500; 
+            }
+            .scoreNumber {
+                font-size: 100%;
+                pointer-events: none;
+                text-align: center;
+                margin: 0px 0px 0px 0px;
+                z-index: 500;
+            }
+        }
+
+        .NextBlockAndLevelDisplay
+        {
+            display: flex;
+            -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
+            box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
+
+        }
+        .NextBlockDisplay {
+
+            h1, h2 {
+                font-size: 100%;
+                pointer-events: none;
+                text-align: center;
+                margin: -30px 10px 0px 10px;
+                z-index: 500;
+            }
+
+
+            .BlockStatDisplayContainer {
+                margin: 10px;
+            }
+        
+            .BlockStatGridDisplay  {
+                margin: auto;
+                width: 55px;
+                z-index: 100;
+            }
+            
+            .BlockStatGridDisplaygridRow{
+                z-index: 100;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-flow: row;
+                justify-content: space-around;
+                line-height:30px;
+            }
+
+        }
+
+        .GameLevelDisplay {
+
+        }
+
+    }
+
+
+    
+
 
     .Popup h1, h2 {
         
-        font-size: 275%;
-        pointer-events: none;
-        text-align: center;
-        margin-top: 0px;
-        margin-bottom: 10px;
+
     }
 
     .GameStatsDisplay h1, h2 {
@@ -160,4 +233,5 @@
         font-family: monospace;
         text-shadow: 1px white;
     }
-}
+
+} 

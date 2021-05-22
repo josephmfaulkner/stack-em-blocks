@@ -26,6 +26,7 @@ class MainGame extends React.Component {
         super(props)
         this.state = { 
             maxWidth: 0,
+            gameStatsDisplayXPos: 0,
             blockWidth: 1,
             touchSensitivity: 50,
         };
@@ -50,8 +51,12 @@ class MainGame extends React.Component {
             const colsNum = this.props.gameGrid[0].length;
             const blockWidth = window.innerHeight / rowsNum;
             const maxWidth = blockWidth * colsNum;
+            const gameStatsDisplayXPos = (window.innerWidth / 2) + (maxWidth / 2);
+            const isMobile = ( window.innerWidth - gameStatsDisplayXPos ) < 150; 
             this.setState({ maxWidth });
             this.setState({ blockWidth });
+            this.setState({ gameStatsDisplayXPos});
+            this.setState({ isMobile });
         }
     }
 
@@ -75,7 +80,13 @@ class MainGame extends React.Component {
        return (   
            <div>
             <PauseButton isVisible={!modalOpen} onClick={this.onResumeClick.bind(this)}/>   
-            <GameStatsDisplay isVisible={!modalOpen} gameScore={this.props.gameScore} blockCount={this.props.blockCount}/>
+            <GameStatsDisplay 
+                isVisible={!modalOpen} 
+                gameScore={this.props.gameScore} 
+                blockCount={this.props.blockCount}
+                xPos={this.state.gameStatsDisplayXPos}
+                isMobile={this.state.isMobile}
+            />
             <div className={className} style={{maxWidth : this.state.maxWidth}}>
                 
                 <InputTouchScreenControls moveThreshold={ this.state.blockWidth * (1 / this.state.touchSensitivity)} >

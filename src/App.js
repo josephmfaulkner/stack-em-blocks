@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Router>
           <Switch>
-            <Route path="/singlePlayerGame" /*path="/singlePlayerGame"*/ >
+            <Route path="/singlePlayerGame" >
               <MainGame />
             </Route>
             <Route path="/" >
