@@ -38,7 +38,7 @@ class MainGame extends React.Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        this.props.startGame();
+        //this.props.startGame();
     }
 
     componentWillUnmount() {

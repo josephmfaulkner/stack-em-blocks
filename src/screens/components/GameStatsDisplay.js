@@ -9,7 +9,7 @@ class GameStatsDisplay extends React.Component {
     render()
     {
         let randBlockMapKeys = Object.keys(BLOCK_DISPLAY_MAP);
-        const displayClassName = this.props.isMobile ? "GameStatsDisplayMobile" : "GameStatsDisplay" ;
+        const displayClassName = this.props.isMobile ? "GameStatsDisplayCompact" : "GameStatsDisplay" ;
         const className = this.props.isVisible ? displayClassName : displayClassName + " GameStatsDisplayHidden";
         
         const xPos = this.props.xPos; 
@@ -17,17 +17,17 @@ class GameStatsDisplay extends React.Component {
         
         return(
             <div className={className} style={style}>
-                <div className="BlockStatsDisplay">
+                <div className="BlockStatsDisplayRow">
                     {
                         randBlockMapKeys.map((key, keyIndex) => 
-                            <div className="BlockStatsDisplayRow" key={keyIndex}>
+                            <div className="BlockStatsDisplayItem" key={keyIndex}>
                                 <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[key]} /> <div>{this.props.blockCount[key]}</div>
                             </div>
                         )
                     }
                 </div>
-                <div className="OtherStatsDisplay">
-                    <div className="GameScoreDisplay">
+                <div className="StatsDisplayRow">
+                    <div className="GameScoreDisplaySection">
                         <div className="scoreItem">
                             <h2 className="scoreIcon"><i className="fa fa-trophy"></i></h2>
                             <h2 className="scoreNumber">{1000}</h2> 
@@ -38,7 +38,7 @@ class GameStatsDisplay extends React.Component {
                         </div>
 
                     </div>
-                    <div className="NextBlockAndLevelDisplay">
+                    <div className="NextBlockAndLevelDisplaySection">
                         <div className="NextBlockDisplay">
                             <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[1]} />
                             <h2><i className="fa fa-forward"></i></h2> 

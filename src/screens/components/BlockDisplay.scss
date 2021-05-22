@@ -1,4 +1,4 @@
-.BlockStatsDisplayRow {
+.BlockStatsDisplayItem {
     display: flex;
     margin: 10px;
 
@@ -30,12 +30,12 @@
 
 }
 
-.GameStatsDisplayMobile
+.GameStatsDisplayCompact
 {
 
     flex-direction: column;
 
-    .BlockStatsDisplay{
+    .BlockStatsDisplayRow{
 
         z-index: 1;
         user-select: none;
@@ -53,7 +53,7 @@
         -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
         box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
 
-        .BlockStatsDisplayRow {
+        .BlockStatsDisplayItem {
             display: flex;
             flex-direction: column;
             margin: 0px;
