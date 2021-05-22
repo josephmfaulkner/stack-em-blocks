@@ -9,15 +9,17 @@ class GameStatsDisplay extends React.Component {
     render()
     {
         let randBlockMapKeys = Object.keys(BLOCK_DISPLAY_MAP);
-        const displayClassName = this.props.isMobile ? "GameStatsDisplayCompact" : "GameStatsDisplay" ;
+        const displayClassName = this.props.isMobile ? "GameStatsDisplayCompact" : "GameStatsDisplayFull" ;
         const className = this.props.isVisible ? displayClassName : displayClassName + " GameStatsDisplayHidden";
         
-        const xPos = this.props.xPos; 
-        const style = this.props.isMobile ? {} : {'left' : xPos};
+        const displayXRight = this.props.displayXRight; 
+
+        const blockStatsDisplayStyle = this.props.isMobile ? {} : {'right' : displayXRight};
+        const statsDisplayStyle = this.props.isMobile ? {} : {'left' : displayXRight};
         
         return(
-            <div className={className} style={style}>
-                <div className="BlockStatsDisplayRow">
+            <div className={className} >
+                <div className="BlockStatsDisplayRow" style={blockStatsDisplayStyle}>
                     {
                         randBlockMapKeys.map((key, keyIndex) => 
                             <div className="BlockStatsDisplayItem" key={keyIndex}>
@@ -26,7 +28,7 @@ class GameStatsDisplay extends React.Component {
                         )
                     }
                 </div>
-                <div className="StatsDisplayRow">
+                <div className="StatsDisplayRow" style={statsDisplayStyle}>
                     <div className="GameScoreDisplaySection">
                         <div className="scoreItem">
                             <h2 className="scoreIcon"><i className="fa fa-trophy"></i></h2>

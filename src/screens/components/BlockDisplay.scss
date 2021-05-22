@@ -30,6 +30,76 @@
 
 }
 
+
+.GameStatsDisplayFull
+{
+
+    position: fixed;
+    left: 0;
+    /* top: 0; */
+    transform: translate(0%, -50%);
+    margin: 0px;
+    border: 0px;
+
+
+    .BlockStatsDisplayRow{
+
+        z-index: 1;
+        user-select: none;
+        position: fixed;
+        top: 50%;
+        transform: translate(0%, -50%);
+        margin-right: 65px;
+
+        /*
+        display: inline-flex;
+        flex-direction: column;
+        */
+
+        border-radius: 5px;
+        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 0.75);
+        outline: none !important;
+        -webkit-box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17); 
+        box-shadow: 0px 0px 25px 5px  rgba(255,255,255,0.17);
+
+        .BlockStatsDisplayItem {
+            display: flex;
+            flex-direction: row;
+            margin: 10px;
+            size: 10;
+
+            text-align: center;
+            font-family:inherit;
+            font-size: inherit;
+            font-size: 150%;
+
+        }
+     
+        .BlockStatGridDisplay  {
+            margin: auto;
+            width: 120px;
+        }
+        
+        .BlockStatGridDisplaygridRow{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-flow: row;
+            justify-content: space-around;
+            line-height:30px;
+        }
+    }
+
+}
+
+
+
 .GameStatsDisplayCompact
 {
 

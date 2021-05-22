@@ -26,9 +26,10 @@ class MainGame extends React.Component {
         super(props)
         this.state = { 
             maxWidth: 0,
-            gameStatsDisplayXPos: 0,
             blockWidth: 1,
             touchSensitivity: 50,
+            displayXLeft: 0, 
+            displayXRight : 0
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         
@@ -51,11 +52,13 @@ class MainGame extends React.Component {
             const colsNum = this.props.gameGrid[0].length;
             const blockWidth = window.innerHeight / rowsNum;
             const maxWidth = blockWidth * colsNum;
-            const gameStatsDisplayXPos = (window.innerWidth / 2) + (maxWidth / 2);
-            const isMobile = ( window.innerWidth - gameStatsDisplayXPos ) < 150; 
+            const displayXLeft =  (window.innerWidth / 2) - (maxWidth / 2);
+            const displayXRight = (window.innerWidth / 2) + (maxWidth / 2);
+            const isMobile = displayXLeft  < 275; 
             this.setState({ maxWidth });
             this.setState({ blockWidth });
-            this.setState({ gameStatsDisplayXPos});
+            this.setState({ displayXLeft });
+            this.setState({ displayXRight })
             this.setState({ isMobile });
         }
     }
@@ -79,12 +82,17 @@ class MainGame extends React.Component {
        let className = modalOpen ? "mainGameContainer PopupBackgroundContent" : "mainGameContainer";
        return (   
            <div>
-            <PauseButton isVisible={!modalOpen} onClick={this.onResumeClick.bind(this)}/>   
+            <PauseButton isVisible={!modalOpen} isMobile={this.state.isMobile} onClick={this.onResumeClick.bind(this)}/>   
             <GameStatsDisplay 
                 isVisible={!modalOpen} 
                 gameScore={this.props.gameScore} 
                 blockCount={this.props.blockCount}
+                
+                displayXLeft={this.state.displayXLeft}
+                displayXRight={this.state.displayXRight}
+
                 xPos={this.state.gameStatsDisplayXPos}
+
                 isMobile={this.state.isMobile}
             />
             <div className={className} style={{maxWidth : this.state.maxWidth}}>
