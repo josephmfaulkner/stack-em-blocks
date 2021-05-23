@@ -39,7 +39,7 @@ class MainGame extends React.Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
-        //this.props.startGame();
+        this.props.startGame();
     }
 
     componentWillUnmount() {
@@ -81,8 +81,7 @@ class MainGame extends React.Component {
        let modalOpen = this.props.paused || this.props.gameOver;
        let className = modalOpen ? "mainGameContainer PopupBackgroundContent" : "mainGameContainer";
        return (   
-           <div>
-            <PauseButton isVisible={!modalOpen} isMobile={this.state.isMobile} onClick={this.onResumeClick.bind(this)}/>   
+           <div> 
             <GameStatsDisplay 
                 isVisible={!modalOpen} 
                 gameScore={this.props.gameScore} 
@@ -94,7 +93,10 @@ class MainGame extends React.Component {
                 xPos={this.state.gameStatsDisplayXPos}
 
                 isMobile={this.state.isMobile}
-            />
+            >
+                <PauseButton isVisible={!modalOpen} isMobile={this.state.isMobile} onClick={this.onResumeClick.bind(this)}/>      
+            </GameStatsDisplay>
+            
             <div className={className} style={{maxWidth : this.state.maxWidth}}>
                 
                 <InputTouchScreenControls moveThreshold={ this.state.blockWidth * (1 / this.state.touchSensitivity)} >

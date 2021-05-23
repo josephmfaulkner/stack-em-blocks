@@ -49,12 +49,12 @@ class GameStatsDisplay extends React.Component {
                             <h2 className="scoreIcon"><i className="fa fa-layer-group"></i></h2>
                             <h2 className="scoreNumber">{1}</h2> 
                         </div>
+                        {this.props.children}
                     </div>    
 
 
                 </div>
                 
-
             </div>
         );
     }

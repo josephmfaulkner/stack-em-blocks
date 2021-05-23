@@ -29,13 +29,13 @@
 
 
     &.Full {
-        top: 5px;
-        right: 15px;
+        top: 50%;
+        transform: translate(-50%,-50%);
     }
 
     &.Compact {
-        top: 90px;
-        right: 15px;
+        right: 0px;
+        bottom: -90px;
     }
 
 } 

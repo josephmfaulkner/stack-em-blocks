@@ -25,7 +25,7 @@ class PopupMainMenu extends React.Component {
         className="Popup PopupPaused"
         overlayClassName="PopupOverlay PopupOverlayPaused"
         >
-        <h1>Stack Them Blocks <i className="fas fa-cubes"></i></h1>     
+        <h1>StackEmBlocks <i className="fas fa-cubes"></i></h1>     
         <div>
             <button onClick={() => {this.props.onClickStartGame();}}>
               <i className="fa fa-play"></i>
