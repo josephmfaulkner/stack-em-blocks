@@ -43,6 +43,17 @@ export default class GameStatusHelper {
 
     }
 
+    static setNextBlockIndex(state, newNextBlockIndex) {
+        const newStats = { ...state.stats, nextBlockIndex: newNextBlockIndex };
+
+        const newState = {
+            ...state,
+            stats: newStats
+        }
+
+        return newState;
+    }
+
     static gameOver(state) {
         const newStats = { ...state.stats, gameOver: true };
 

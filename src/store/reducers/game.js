@@ -2,13 +2,14 @@ import { newBlank2dArray } from "../utils/misc";
 
 import { MOVE_BLOCK, ROTATE_BLOCK, REPLACE_PLAYER_BLOCK } from "../actions/block";
 import { CLEAR_FILLED_ROWS, SHIFT_CLEARED_ROWS, ADD_PLAYER_BLOCK_TO_GRID } from "../actions/gameGrid";
-import { INCREMENT_GAME_SCORE, RESTART_GAME, START_GAME, PAUSE_RESUME_GAME, GAME_OVER } from "../actions/gameStatus";
+import { INCREMENT_GAME_SCORE, SET_NEXT_BLOCK_INDEX ,RESTART_GAME, START_GAME, PAUSE_RESUME_GAME, GAME_OVER, setNextBlockIndex } from "../actions/gameStatus";
 import { INCREMENT_BLOCK_COUNT } from "../actions/gameStats";
 
 
 import GameBlockHelper from "./helpers/GameBlockHelper";
 import GameGridHelper from "./helpers/GameGridHelper";
 import GameStatusHelper from "./helpers/GameStatusHelper";
+import { act } from "react-dom/test-utils";
 
 
 const defaultState = {
@@ -23,6 +24,7 @@ const defaultState = {
         gameOver: false,
         level: 1,
         score: 0,
+        nextBlockIndex: null,
         blockCount : {
             0: 0,
             1: 0,
@@ -60,7 +62,10 @@ const game = function(state = defaultState, action)
             return GameStatusHelper.incrementGameScore(state, incrementAmount);
         case INCREMENT_BLOCK_COUNT:
             const blockCountIncAmount = action.payload;
-            return GameStatusHelper.incrementBlockCount(state, blockCountIncAmount);    
+            return GameStatusHelper.incrementBlockCount(state, blockCountIncAmount);
+        case SET_NEXT_BLOCK_INDEX: 
+            const nextBlockIndex = action.payload;
+            return GameStatusHelper.setNextBlockIndex(state, nextBlockIndex);  
         case PAUSE_RESUME_GAME:
             return GameStatusHelper.togglePaused(state);
         case GAME_OVER:

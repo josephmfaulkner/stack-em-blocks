@@ -1,11 +1,11 @@
 import { select, put, takeLatest, call } from 'redux-saga/effects'
 
 
-import { START_GAME, RESTART_GAME, PAUSE_RESUME_GAME, gameOver, incrementGameScore } from "../actions/gameStatus";
+import { START_GAME, RESTART_GAME, PAUSE_RESUME_GAME, gameOver, incrementGameScore, setNextBlockIndex } from "../actions/gameStatus";
 import { incrementBlockCount } from "../actions/gameStats"
 import { clearFilledRows, shiftClearedRows, addPlayerBlockToGrid } from "../actions/gameGrid";
 import { moveDown, replacePlayerBlock } from "../actions/block"
-import { getRandomBlock } from "../utils/blockConstants";
+import { getRandomBlock, getBlockByIndex } from "../utils/blockConstants";
 import { canMoveDown, isGameOver } from "../utils/moveValidations";
 import * as GameGridUtil from "../utils/gameGrid";
 
@@ -18,6 +18,7 @@ import {
 import { playSoundEffect } from "../actions/sound";
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
+const getNextBlockIndex = (state) => { return state.game.stats.nextBlockIndex };
 const getGamePaused = (state) => { return state.game.stats.paused };
 const getGameOver = (state) => { return isGameOver(state.game); };
 const getCanMoveDown = (state) => { return canMoveDown(state.game); };
@@ -66,9 +67,15 @@ export function* mainGameLoop(action) {
                 yield put(playSoundEffect(SHIFT_BLOCK_SOUND));
                 yield put(incrementGameScore( rowsToClear ));
             }
+
+            let nextBlockIndex = yield select(getNextBlockIndex);
+            let nextBlockData = yield call(getBlockByIndex , nextBlockIndex);
+
+            yield put(replacePlayerBlock(nextBlockData));
+            yield put(incrementBlockCount(nextBlockIndex));
+
             let nextBlock = yield call(getRandomBlock);
-            yield put(replacePlayerBlock(nextBlock.blockData));
-            yield put(incrementBlockCount(nextBlock.blockIndex));
+            yield put(setNextBlockIndex(nextBlock.blockIndex));
         }
 
     }
@@ -80,6 +87,11 @@ export function* startNewGame() {
 
     yield put(replacePlayerBlock(nextBlock.blockData));
     yield put(incrementBlockCount(nextBlock.blockIndex));
+    
+    nextBlock = yield call(getRandomBlock);
+    yield put(setNextBlockIndex(nextBlock.blockIndex));
+
+
     yield call(mainGameLoop);
 }
 

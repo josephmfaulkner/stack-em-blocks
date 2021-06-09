@@ -86,7 +86,7 @@ class MainGame extends React.Component {
                 isVisible={!modalOpen} 
                 gameScore={this.props.gameScore} 
                 blockCount={this.props.blockCount}
-                
+                nextBlockIndex={this.props.nextBlockIndex}
                 displayXLeft={this.state.displayXLeft}
                 displayXRight={this.state.displayXRight}
 
@@ -132,6 +132,7 @@ const mapStateToProps = (state) => {
       gameLevel: state.game.stats.level,  
       gameGrid: getGameStateAsGrid(state.game),
       playerBlock: state.game.playerBlock,
+      nextBlockIndex : state.game.stats.nextBlockIndex,
       paused : state.game.stats.paused,
       gameOver : state.game.stats.gameOver
     }

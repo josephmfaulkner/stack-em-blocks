@@ -62,6 +62,10 @@ const getRandomBlock = function(){
     };
 }
 
+const getBlockByIndex = function(index){
+    return RAND_BLOCK_MAP[index];
+}
+
 export {
     SHAPE_T,
     SHAPE_S,
@@ -71,7 +75,8 @@ export {
     SHAPE_I,
     SHAPE_B,
     RAND_BLOCK_MAP,
-    getRandomBlock
+    getRandomBlock,
+    getBlockByIndex
 }
 
 

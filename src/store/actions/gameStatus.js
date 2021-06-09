@@ -3,6 +3,7 @@ const RESTART_GAME = 'RESTART_GAME';
 const PAUSE_RESUME_GAME = 'PAUSE_RESUME_GAME';
 const UPDATE_GAME_SCORE = 'UPDATE_GAME_SCORE';
 const INCREMENT_GAME_SCORE = 'INCREMENT_GAME_SCORE';
+const SET_NEXT_BLOCK_INDEX = 'SET_NEXT_BLOCK_INDEX';
 const GAME_OVER = 'GAME_OVER';
 const EXIT_GAME = 'EXIT_GAME';
 
@@ -39,6 +40,14 @@ function incrementGameScore(amount)
     }
 }
 
+function setNextBlockIndex(index)
+{
+    return {
+        type: SET_NEXT_BLOCK_INDEX,
+        payload: index
+    }
+}
+
 function togglePauseGame() {
     return {
         type: PAUSE_RESUME_GAME,
@@ -66,6 +75,7 @@ export {
     PAUSE_RESUME_GAME, togglePauseGame,
     UPDATE_GAME_SCORE, updateGameScore,
     INCREMENT_GAME_SCORE, incrementGameScore,
+    SET_NEXT_BLOCK_INDEX, setNextBlockIndex,
     GAME_OVER, gameOver,
     EXIT_GAME, exitGame
 }

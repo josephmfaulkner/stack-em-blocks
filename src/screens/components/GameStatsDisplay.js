@@ -42,7 +42,7 @@ class GameStatsDisplay extends React.Component {
                     </div>
                     <div className="NextBlockAndLevelDisplaySection">
                         <div className="NextBlockDisplay">
-                            <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[1]} />
+                            <BlockDisplay blockData = {BLOCK_DISPLAY_MAP[this.props.nextBlockIndex]} />
                             <h2><i className="fa fa-forward"></i></h2> 
                         </div>
                         <div className="scoreItem">

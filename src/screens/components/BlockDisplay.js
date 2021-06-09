@@ -25,6 +25,7 @@ class BlockDisplay extends React.Component {
                             )}
                         </div>
                     )}
+
                 </div>
             </div>
         );
